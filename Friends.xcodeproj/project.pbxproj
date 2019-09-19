@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		B530D88C23334C7A00A1AA4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D88B23334C7A00A1AA4F /* AppDelegate.swift */; };
-		B530D88E23334C7A00A1AA4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D88D23334C7A00A1AA4F /* ViewController.swift */; };
+		B530D88E23334C7A00A1AA4F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D88D23334C7A00A1AA4F /* MainViewController.swift */; };
 		B530D89123334C7A00A1AA4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B530D88F23334C7A00A1AA4F /* Main.storyboard */; };
 		B530D89323334C7B00A1AA4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B530D89223334C7B00A1AA4F /* Assets.xcassets */; };
 		B530D89623334C7B00A1AA4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B530D89423334C7B00A1AA4F /* LaunchScreen.storyboard */; };
 		B530D8A123334C7B00A1AA4F /* FriendsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8A023334C7B00A1AA4F /* FriendsTests.swift */; };
 		B530D8AD23335D1E00A1AA4F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B530D8AC23335D1E00A1AA4F /* Alamofire.framework */; };
+		B530D8B023337BAE00A1AA4F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8AF23337BAE00A1AA4F /* NetworkManager.swift */; };
+		B530D8B223337E6100A1AA4F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8B123337E6100A1AA4F /* User.swift */; };
+		B530D8B423338D8400A1AA4F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8B323338D8400A1AA4F /* TableViewCell.swift */; };
+		B530D8D42333A0BC00A1AA4F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8D32333A0BC00A1AA4F /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,7 +33,7 @@
 /* Begin PBXFileReference section */
 		B530D88823334C7A00A1AA4F /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B530D88B23334C7A00A1AA4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B530D88D23334C7A00A1AA4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B530D88D23334C7A00A1AA4F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B530D89023334C7A00A1AA4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B530D89223334C7B00A1AA4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B530D89523334C7B00A1AA4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +42,10 @@
 		B530D8A023334C7B00A1AA4F /* FriendsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTests.swift; sourceTree = "<group>"; };
 		B530D8A223334C7B00A1AA4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B530D8AC23335D1E00A1AA4F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		B530D8AF23337BAE00A1AA4F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B530D8B123337E6100A1AA4F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B530D8B323338D8400A1AA4F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		B530D8D32333A0BC00A1AA4F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,10 +90,14 @@
 			isa = PBXGroup;
 			children = (
 				B530D88B23334C7A00A1AA4F /* AppDelegate.swift */,
-				B530D88D23334C7A00A1AA4F /* ViewController.swift */,
+				B530D88D23334C7A00A1AA4F /* MainViewController.swift */,
+				B530D8AF23337BAE00A1AA4F /* NetworkManager.swift */,
+				B530D8B323338D8400A1AA4F /* TableViewCell.swift */,
 				B530D88F23334C7A00A1AA4F /* Main.storyboard */,
+				B530D8D32333A0BC00A1AA4F /* DataManager.swift */,
 				B530D89223334C7B00A1AA4F /* Assets.xcassets */,
 				B530D89423334C7B00A1AA4F /* LaunchScreen.storyboard */,
+				B530D8B123337E6100A1AA4F /* User.swift */,
 				B530D89723334C7B00A1AA4F /* Info.plist */,
 			);
 			path = Friends;
@@ -231,7 +243,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B530D88E23334C7A00A1AA4F /* ViewController.swift in Sources */,
+				B530D8B423338D8400A1AA4F /* TableViewCell.swift in Sources */,
+				B530D8D42333A0BC00A1AA4F /* DataManager.swift in Sources */,
+				B530D8B223337E6100A1AA4F /* User.swift in Sources */,
+				B530D8B023337BAE00A1AA4F /* NetworkManager.swift in Sources */,
+				B530D88E23334C7A00A1AA4F /* MainViewController.swift in Sources */,
 				B530D88C23334C7A00A1AA4F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,7 +424,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Grebenozhko-Maksim.Friends";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -430,7 +446,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Grebenozhko-Maksim.Friends";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
