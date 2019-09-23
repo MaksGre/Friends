@@ -15,9 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
+        let viewController = MainAssembly.createModule()
+        let navigationController = UINavigationController.init(rootViewController: viewController)
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.backgroundColor = .white
-        window.rootViewController = MainAssembly.createModule()
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
         self.window = window

@@ -14,7 +14,7 @@ final class MainAssembly {
         let view = MainViewController()
         let interactor = MainInteractorImpl(networkService: NetworkServiceImpl())
         let router = MainRouterImpl()
-        let presenter = MainPresenterImpl(view: view, interactor: interactor, router: router)
+        let presenter = MainPresenterImpl(view: view as! MainView, interactor: interactor, router: router)
         
         view.presenter = presenter
         router.viewController = view
