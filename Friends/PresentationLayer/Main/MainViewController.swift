@@ -8,28 +8,38 @@
 
 import UIKit
 
-class MainViewController: UITableViewController {
+protocol MainView: AnyObject {
+    var presenter: MainPresenter? { get set }
+}
+
+// MARK: - ViewImpl
+
+final class MainViewController: UITableViewController, MainView {
+    
+    // MARK: - Outlets
+
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NetworkManager.shared.fetchData()
+        presenter?.didTriggerViewReadyEvent()
     }
-
+    
+    // MARK: - Actions
+    
+    // MARK: - MainView
+    
+    var presenter: MainPresenter?
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = DataManager.shared.users?.count else { return 0 }
         
-        return count
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        
-        if let user = DataManager.shared.users?[indexPath.row] {
-            cell.configureCellBy(user)
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: TableViewCell.self), for: indexPath) as! TableViewCell
         
         return cell
         
