@@ -20,6 +20,7 @@
 		B530D8DB23354F1900A1AA4F /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8DA23354F1900A1AA4F /* MainInteractor.swift */; };
 		B530D8DD2335506200A1AA4F /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8DC2335506200A1AA4F /* MainPresenter.swift */; };
 		B5A08B65233889C900832832 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A08B64233889C900832832 /* UserItem.swift */; };
+		B5A08B672338C39F00832832 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A08B662338C39F00832832 /* SnapKit.framework */; };
 		B5E774202338804400CB7DA2 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E7741F2338804400CB7DA2 /* MainRouter.swift */; };
 		B5E774272338868500CB7DA2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E774262338868500CB7DA2 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +52,7 @@
 		B530D8DA23354F1900A1AA4F /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		B530D8DC2335506200A1AA4F /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		B5A08B64233889C900832832 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
+		B5A08B662338C39F00832832 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		B5E7741F2338804400CB7DA2 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		B5E774262338868500CB7DA2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B530D8AD23335D1E00A1AA4F /* Alamofire.framework in Frameworks */,
+				B5A08B672338C39F00832832 /* SnapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +118,7 @@
 		B530D8AB23335D1E00A1AA4F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B5A08B662338C39F00832832 /* SnapKit.framework */,
 				B530D8AC23335D1E00A1AA4F /* Alamofire.framework */,
 			);
 			name = Frameworks;
@@ -300,6 +304,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			outputFileListPaths = (
 			);

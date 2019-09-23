@@ -7,13 +7,31 @@
 //
 
 import UIKit
+import SnapKit
 
 class TableViewCell: UITableViewCell {
 
-    @IBOutlet var nameLabel: UILabel!
-    @IBOutlet var emailLabel: UILabel!
-    @IBOutlet var activeLabel: UILabel!
+//    @IBOutlet var nameLabel: UILabel!
+//    @IBOutlet var emailLabel: UILabel!
+//    @IBOutlet var activeLabel: UILabel!
     
+// MARK: - Private properties
+    
+    private lazy var nameLabel = UILabel()
+    private lazy var emailLabel = UILabel()
+    private lazy var activeLabel = UILabel()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.addSubview(nameLabel)
+        nameLabel.text = "Hello"
+        nameLabel.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(100)
+            make.center.equalTo(self)
+        }
+    }
+
     func configureCellBy(_ user: User) {
         nameLabel.text = user.name
         emailLabel.text = user.email

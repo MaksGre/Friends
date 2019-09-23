@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol MainView: AnyObject {
     var presenter: MainPresenter? { get set }
@@ -16,13 +17,15 @@ protocol MainView: AnyObject {
 
 final class MainViewController: UITableViewController, MainView {
     
-    // MARK: - Outlets
-
+    // MARK: - Private properties
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.didTriggerViewReadyEvent()
+        
+TableViewCell
+        //presenter?.didTriggerViewReadyEvent()
     }
     
     // MARK: - Actions

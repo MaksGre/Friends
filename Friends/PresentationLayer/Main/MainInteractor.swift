@@ -9,6 +9,7 @@
 import Foundation
 
 typealias UserHandler = (User) -> Void
+typealias FriendsHandler = (User) -> Void
 
 // MARK: - Interactor
 
