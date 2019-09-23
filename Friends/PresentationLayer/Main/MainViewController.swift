@@ -41,6 +41,7 @@ final class MainViewController: UIViewController, MainView {
         view.addSubview(self.tableView)
         tableView.register(TableViewCell.self, forCellReuseIdentifier: tableCellIdentifier)
         tableView.dataSource = self
+        tableView.rowHeight = 90
         
         updateLayout(with: self.view.frame.size)
         
@@ -74,8 +75,10 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath) as! TableViewCell
         cell.configureCellBy(data[indexPath.row])
+        if indexPath.row == 0 {
+            cell.accessoryType = .disclosureIndicator
+        }
         
         return cell
-
     }
 }
