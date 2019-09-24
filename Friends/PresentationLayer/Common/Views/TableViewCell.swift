@@ -38,38 +38,73 @@ class TableViewCell: UITableViewCell {
     }
 
     private func configureLabels() {
-        let fromTop = 10
-        //let toBottom = 10
-        let fromLeft = 20
-        //let toRight = 20
-        //let verticalSpacing = 20
-        let horizontalSpacing = 5
-        let height = 21
-        
-        descriptionNameLabel.text = "Name:"
-        descriptionEmailLabel.text = "Email:"
-        descriptionActiveLabel.text = "Active:"
-        
-        contentView.addSubview(descriptionNameLabel)
-        contentView.addSubview(descriptionEmailLabel)
-        contentView.addSubview(descriptionActiveLabel)
-        contentView.addSubview(valueNameLabel)
-        contentView.addSubview(valueEmailLabel)
-        contentView.addSubview(valueActiveLabel)
-        
-        makeConstraints(descriptionNameLabel, fromTop, fromLeft, height)
-        makeConstraints(descriptionEmailLabel, fromTop + height + horizontalSpacing, fromLeft, height)
-        makeConstraints(descriptionActiveLabel, fromTop + height * 2 + horizontalSpacing * 2, fromLeft, height)
-        makeConstraints(valueNameLabel, fromTop, fromLeft + 60, height)
-        makeConstraints(valueEmailLabel, fromTop + height + horizontalSpacing, fromLeft + 60, height)
-        makeConstraints(valueActiveLabel, fromTop + height * 2 + horizontalSpacing * 2, fromLeft + 60, height)
+        configureLabel(valueNameLabel, text: "name", labelOnRight: true,
+                       topNeighbor: nil, rightNeighbor: nil)
+        configureLabel(valueEmailLabel, text: "email", labelOnRight: true,
+                       topNeighbor: valueNameLabel, rightNeighbor: nil)
+        configureLabel(valueActiveLabel, text: "active", labelOnRight: true,
+                       topNeighbor: valueEmailLabel, rightNeighbor: nil)
+        configureLabel(descriptionNameLabel, text: "Name:", labelOnRight: false,
+                       topNeighbor: nil, rightNeighbor: valueNameLabel)
+        configureLabel(descriptionEmailLabel, text: "Email:", labelOnRight: false,
+                       topNeighbor: descriptionNameLabel, rightNeighbor: valueEmailLabel)
+        configureLabel(descriptionActiveLabel, text: "Active:", labelOnRight: false,
+                       topNeighbor: descriptionEmailLabel, rightNeighbor: valueActiveLabel)
     }
     
-    private func makeConstraints(_ label: UILabel, _ top: Int, _ left: Int, _ height: Int) {
-        label.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(top)
-            make.left.equalTo(left)
-            make.height.equalTo(height)
+    private func configureLabel(_ label: UILabel, text: String, labelOnRight: Bool,
+                                topNeighbor: UILabel?, rightNeighbor: UILabel?) {
+        let fromLeft = 100
+        let fromTop = 10
+        let horizontalSpacing = 5
+        let verticalSpacing = 20
+        let fontSize: CGFloat = 15.0
+        var topOffset = 0
+        
+        contentView.addSubview(label)
+        label.text = text
+        label.font = .systemFont(ofSize: fontSize, weight: .regular)
+        label.snp.makeConstraints {
+            if labelOnRight {
+                $0.left.equalTo(fromLeft)
+            } else {
+                if let rightNeighbor = rightNeighbor {
+                    $0.right.equalTo(rightNeighbor.snp.left).offset(-verticalSpacing)
+                }
+            }
+            if let topNeighbor = topNeighbor {
+                $0.top.equalTo(topNeighbor.snp.bottom).offset(horizontalSpacing)
+            } else {
+                $0.top.equalTo(fromTop)
+            }
+        }
+    }
+    
+    private func configureLabel(_ label: UILabel, text: String, labelOnRight: Bool,
+                                topNeighbor: UILabel?, rightNeighbor: UILabel?) {
+        let fromLeft = 100
+        let fromTop = 10
+        let horizontalSpacing = 5
+        let verticalSpacing = 20
+        let fontSize: CGFloat = 15.0
+        var topOffset = 0
+        
+        contentView.addSubview(label)
+        label.text = text
+        label.font = .systemFont(ofSize: fontSize, weight: .regular)
+        label.snp.makeConstraints {
+            if labelOnRight {
+                $0.left.equalTo(fromLeft)
+            } else {
+                if let rightNeighbor = rightNeighbor {
+                    $0.right.equalTo(rightNeighbor.snp.left).offset(-verticalSpacing)
+                }
+            }
+            if let topNeighbor = topNeighbor {
+                $0.top.equalTo(topNeighbor.snp.bottom).offset(horizontalSpacing)
+            } else {
+                $0.top.equalTo(fromTop)
+            }
         }
     }
     
