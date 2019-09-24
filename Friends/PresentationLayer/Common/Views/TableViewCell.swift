@@ -57,37 +57,20 @@ class TableViewCell: UITableViewCell {
         contentView.addSubview(valueEmailLabel)
         contentView.addSubview(valueActiveLabel)
         
-        descriptionNameLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(fromTop)
-            make.left.equalTo(fromLeft)
+        makeConstraints(descriptionNameLabel, fromTop, fromLeft, height)
+        makeConstraints(descriptionEmailLabel, fromTop + height + horizontalSpacing, fromLeft, height)
+        makeConstraints(descriptionActiveLabel, fromTop + height * 2 + horizontalSpacing * 2, fromLeft, height)
+        makeConstraints(valueNameLabel, fromTop, fromLeft + 60, height)
+        makeConstraints(valueEmailLabel, fromTop + height + horizontalSpacing, fromLeft + 60, height)
+        makeConstraints(valueActiveLabel, fromTop + height * 2 + horizontalSpacing * 2, fromLeft + 60, height)
+    }
+    
+    private func makeConstraints(_ label: UILabel, _ top: Int, _ left: Int, _ height: Int) {
+        label.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(top)
+            make.left.equalTo(left)
             make.height.equalTo(height)
         }
-        descriptionEmailLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(fromTop + height + horizontalSpacing)
-            make.left.equalTo(fromLeft)
-            make.height.equalTo(height)
-        }
-        descriptionActiveLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(fromTop + height * 2 + horizontalSpacing * 2)
-            make.left.equalTo(fromLeft)
-            make.height.equalTo(height)
-        }
-        valueNameLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(fromTop)
-            make.left.equalTo(fromLeft + 60)
-            make.height.equalTo(height)
-        }
-        valueEmailLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(fromTop + height + horizontalSpacing)
-            make.left.equalTo(fromLeft + 60)
-            make.height.equalTo(height)
-        }
-        valueActiveLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(fromTop + height * 2 + horizontalSpacing * 2)
-            make.left.equalTo(fromLeft + 60)
-            make.height.equalTo(height)
-        }
-        
     }
     
     func configureCellBy(_ text: String) {
