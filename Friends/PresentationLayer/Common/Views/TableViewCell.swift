@@ -38,40 +38,25 @@ class TableViewCell: UITableViewCell {
     }
 
     private func configureLabels() {
-        configureLabel(valueNameLabel, text: "name", labelOnRight: true,
-                       topNeighbor: nil, rightNeighbor: nil)
-        configureLabel(valueEmailLabel, text: "email", labelOnRight: true,
-                       topNeighbor: valueNameLabel, rightNeighbor: nil)
-        configureLabel(valueActiveLabel, text: "active", labelOnRight: true,
-                       topNeighbor: valueEmailLabel, rightNeighbor: nil)
-        configureLabel(descriptionNameLabel, text: "Name:", labelOnRight: false,
-                       topNeighbor: nil, rightNeighbor: valueNameLabel)
-        configureLabel(descriptionEmailLabel, text: "Email:", labelOnRight: false,
-                       topNeighbor: descriptionNameLabel, rightNeighbor: valueEmailLabel)
-        configureLabel(descriptionActiveLabel, text: "Active:", labelOnRight: false,
-                       topNeighbor: descriptionEmailLabel, rightNeighbor: valueActiveLabel)
+        configureRightLabel(valueNameLabel, text: "name", topNeighbor: nil)
+        configureRightLabel(valueEmailLabel, text: "email", topNeighbor: valueNameLabel)
+        configureRightLabel(valueActiveLabel, text: "active", topNeighbor: valueEmailLabel)
+        configureLeftLabel(descriptionNameLabel, text: "Name:", rightNeighbor: valueNameLabel)
+        configureLeftLabel(descriptionEmailLabel, text: "Email:", rightNeighbor: valueEmailLabel)
+        configureLeftLabel(descriptionActiveLabel, text: "Active:", rightNeighbor: valueActiveLabel)
     }
     
-    private func configureLabel(_ label: UILabel, text: String, labelOnRight: Bool,
-                                topNeighbor: UILabel?, rightNeighbor: UILabel?) {
+    private func configureRightLabel(_ label: UILabel, text: String, topNeighbor: UILabel?) {
         let fromLeft = 100
         let fromTop = 10
         let horizontalSpacing = 5
-        let verticalSpacing = 20
         let fontSize: CGFloat = 15.0
-        var topOffset = 0
         
         contentView.addSubview(label)
         label.text = text
         label.font = .systemFont(ofSize: fontSize, weight: .regular)
         label.snp.makeConstraints {
-            if labelOnRight {
-                $0.left.equalTo(fromLeft)
-            } else {
-                if let rightNeighbor = rightNeighbor {
-                    $0.right.equalTo(rightNeighbor.snp.left).offset(-verticalSpacing)
-                }
-            }
+            $0.left.equalTo(fromLeft)
             if let topNeighbor = topNeighbor {
                 $0.top.equalTo(topNeighbor.snp.bottom).offset(horizontalSpacing)
             } else {
@@ -80,30 +65,17 @@ class TableViewCell: UITableViewCell {
         }
     }
     
-    private func configureLabel(_ label: UILabel, text: String, labelOnRight: Bool,
-                                topNeighbor: UILabel?, rightNeighbor: UILabel?) {
-        let fromLeft = 100
-        let fromTop = 10
-        let horizontalSpacing = 5
+    private func configureLeftLabel(_ label: UILabel, text: String, rightNeighbor: UILabel?) {
         let verticalSpacing = 20
         let fontSize: CGFloat = 15.0
-        var topOffset = 0
         
         contentView.addSubview(label)
         label.text = text
         label.font = .systemFont(ofSize: fontSize, weight: .regular)
-        label.snp.makeConstraints {
-            if labelOnRight {
-                $0.left.equalTo(fromLeft)
-            } else {
-                if let rightNeighbor = rightNeighbor {
-                    $0.right.equalTo(rightNeighbor.snp.left).offset(-verticalSpacing)
-                }
-            }
-            if let topNeighbor = topNeighbor {
-                $0.top.equalTo(topNeighbor.snp.bottom).offset(horizontalSpacing)
-            } else {
-                $0.top.equalTo(fromTop)
+        if let rightNeighbor = rightNeighbor {
+            label.snp.makeConstraints {
+                $0.right.equalTo(rightNeighbor.snp.left).offset(-verticalSpacing)
+                $0.centerY.equalTo(rightNeighbor.snp.centerY).offset(0)
             }
         }
     }
