@@ -33,6 +33,7 @@ final class MainPresenterImpl: MainPresenter {
     // MARK: - MainPresenter
     
     func didTriggerViewReadyEvent() {
+        interactor.loadData()
         interactor.subscribeOnUsers { [weak self] users in
             //map [User] to [UserItem] and send to view
         }

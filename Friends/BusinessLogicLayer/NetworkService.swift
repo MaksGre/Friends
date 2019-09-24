@@ -27,7 +27,6 @@ final class NetworkServiceImpl: NetworkService {
             completion(.failure(NetworkServiceError.badURL))
             return
         }
-        
         request(url).validate().responseJSON { dataResponse in
             switch dataResponse.result {
             case .success:

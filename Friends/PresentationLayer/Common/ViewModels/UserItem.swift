@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+class UserItem {
+    static var users: [User] = []
+}
