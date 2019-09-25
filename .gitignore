@@ -1,11 +1,7 @@
-# Mac OS X
-.DS_Store
-
-# Xcode
-
 ## Build generated
 build/
 DerivedData
+build.xcarchive
 
 ## Various settings
 *.pbxuser
@@ -28,12 +24,6 @@ xcuserdata
 *.hmap
 *.ipa
 
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
-
-# Swift Package Manager
-.build/
-
 # Carthage
+Carthage/Checkouts
 Carthage/Build
