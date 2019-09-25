@@ -20,7 +20,7 @@ protocol NetworkService: AnyObject {
 
 final class NetworkServiceImpl: NetworkService {
     
-    private let jsonUrl = "https://www.dropbox.com/s/s8g63b149tnbg8x/users.json?dl=0"
+    private let jsonUrl = "https://dl.dropboxusercontent.com/s/s8g63b149tnbg8x/users.json?dl=0"
     
     func fetchUsers(completion: @escaping FetchUsersCompletion) {
         guard let url = URL(string: jsonUrl) else {
@@ -34,7 +34,9 @@ final class NetworkServiceImpl: NetworkService {
                 do {
                     if let data = dataResponse.data {
                         let users = try decoder.decode([User].self, from: data)
-                        completion(.success(users))
+                        DispatchQueue.main.async {
+                            completion(.success(users))
+                        }
                     }
                 } catch {
                     completion(.failure(error))

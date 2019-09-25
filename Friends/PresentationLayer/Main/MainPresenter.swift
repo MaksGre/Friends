@@ -34,6 +34,11 @@ final class MainPresenterImpl: MainPresenter {
     
     func didTriggerViewReadyEvent() {
         interactor.loadData()
+        print(Date())
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.view?.reloadData()
+            print(Date())
+        }
         interactor.subscribeOnUsers { [weak self] users in
             //map [User] to [UserItem] and send to view
         }

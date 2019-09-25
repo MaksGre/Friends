@@ -80,10 +80,10 @@ class TableViewCell: UITableViewCell {
         }
     }
     
-    func configureCellBy(_ text: String) {
-        valueNameLabel.text = text
-        valueEmailLabel.text = text
-        valueActiveLabel.text = text
+    func configureCellBy(_ user: User) {
+        valueNameLabel.text = user.name
+        valueEmailLabel.text = user.email
+        valueActiveLabel.text = String(user.isActive)
     }
 
 }

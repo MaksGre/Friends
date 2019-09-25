@@ -10,6 +10,7 @@ import UIKit
 
 protocol MainView: AnyObject {
     var presenter: MainPresenter? { get set }
+    func reloadData()
 }
 
 // MARK: - ViewImpl
@@ -17,14 +18,6 @@ protocol MainView: AnyObject {
 final class MainViewController: UIViewController, MainView {
     
     // MARK: - Private properties
-    private var data = ["Aisha Velasquez", "Brady Tyler", "Guy Trujillo", "Barker Powell",
-                        "Goldie Clemons", "Caldwell Daniels", "Bonnie Guerrero",
-                        "Mcmahon Parrish", "Mccray Kim", "Craig Short", "Hurley Larson",
-                        "Katie Shepherd", "Vasquez Bird", "Stout Nelson", "Tameka Lott",
-                        "Aisha Velasquez", "Brady Tyler", "Guy Trujillo", "Barker Powell",
-                        "Goldie Clemons", "Caldwell Daniels", "Bonnie Guerrero",
-                        "Mcmahon Parrish", "Mccray Kim", "Craig Short", "Hurley Larson",
-                        "Katie Shepherd", "Vasquez Bird", "Stout Nelson", "Tameka Lott"]
     
     let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
     let tableCellIdentifier = String(describing: TableViewCell.self)
@@ -42,24 +35,19 @@ final class MainViewController: UIViewController, MainView {
         tableView.register(TableViewCell.self, forCellReuseIdentifier: tableCellIdentifier)
         tableView.dataSource = self
         tableView.rowHeight = 90
-        
-        updateLayout(with: self.view.frame.size)
+        tableView.snp.makeConstraints { maker in
+            maker.edges.equalTo(view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        }
         
         presenter?.didTriggerViewReadyEvent()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        coordinator.animate(alongsideTransition: { (contex) in
-            self.updateLayout(with: size)
-        }, completion: nil)
-    }
+    // MARK: - Public func
     
-    // MARK: - private func
-    
-    private func updateLayout(with size: CGSize) {
-        tableView.frame = CGRect.init(origin: .zero, size: size)
+    func reloadData() {
+        tableView.reloadData()
     }
+    // MARK: - Private func
     
 }
 
@@ -68,15 +56,18 @@ extension MainViewController: UITableViewDataSource {
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return data.count
+        guard let count = UserItem.users?.count else { return 0 }
+        
+        return count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath) as! TableViewCell
-        cell.configureCellBy(data[indexPath.row])
-        if indexPath.row == 0 {
-            cell.accessoryType = .disclosureIndicator
+        if let user = UserItem.users?[indexPath.row] {
+            cell.configureCellBy(user)
+            if user.isActive {
+                cell.accessoryType = .disclosureIndicator
+            }
         }
         
         return cell

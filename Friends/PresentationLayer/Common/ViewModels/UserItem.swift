@@ -9,5 +9,5 @@
 import Foundation
 
 class UserItem {
-    static var users: [User] = []
+    static var users: [User]? = []
 }
