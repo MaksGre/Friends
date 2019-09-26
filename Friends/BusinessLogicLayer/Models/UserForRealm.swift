@@ -9,21 +9,27 @@
 import Foundation
 import RealmSwift
 
-class UserRealm: Object, Decodable {
-    @objc dynamic var id: Int
-    @objc dynamic var guid: String
-    @objc dynamic var isActive: Bool
-    @objc dynamic var balance: String
-    @objc dynamic var age: Int
-    let eyeColor = List<EyeColorRealm>()
-    @objc dynamic var name: String
-    let gender = List<GenderRealm>()
-    @objc dynamic var company, email, phone, address: String
-    @objc dynamic var about, registered: String
-    @objc dynamic var latitude, longitude: Double
+class UserRealm: Object {
+    @objc dynamic var id = Int()
+    @objc dynamic var date = Date()
+    @objc dynamic var guid = String()
+    @objc dynamic var isActive = Bool()
+    @objc dynamic var balance = String()
+    @objc dynamic var age = Int()
+    @objc dynamic var eyeColor = String()
+    @objc dynamic var name = String()
+    @objc dynamic var gender = String()
+    @objc dynamic var company = String()
+    @objc dynamic var email = String()
+    @objc dynamic var phone = String()
+    @objc dynamic var address = String()
+    @objc dynamic var about = String()
+    @objc dynamic var registered = String()
+    @objc dynamic var latitude = Double()
+    @objc dynamic var longitude = Double()
     let tags = List<String>()
-    let friends = List<FriendRealm>()
-    let favoriteFruit = List<FavoriteFruitRealm>()
+    let friends = List<Int>()
+    @objc dynamic var favoriteFruit = String()
     
     override static func primaryKey() -> String? {
         return "id"
@@ -31,48 +37,45 @@ class UserRealm: Object, Decodable {
     
     static func getUserObject(
         id: Int, guid: String, isActive: Bool, balance: String, age: Int,
-        eyeColor: EyeColorRealm, name: String, gender: GenderRealm,
+        eyeColor: String, name: String, gender: String,
         company: String, email: String, phone: String, address: String,
         about: String, registered: String, latitude: Double, longitude: Double,
-        tags: [String], friends: [FriendRealm], favoriteFruit: [FavoriteFruitRealm]) -> UserRealm {
+        tags: [String], friends: [Friend], favoriteFruit: String) -> UserRealm {
         
-        let user = UserRealm(from: <#Decoder#>)
+        let user = UserRealm()
+        user.id = id
+        user.date = Date()
+        user.guid = guid
+        user.isActive = isActive
+        user.balance = balance
+        user.age = age
+        user.eyeColor = eyeColor
+        user.name = name
+        user.gender = gender
+        user.company = company
+        user.email = email
+        user.phone = phone
+        user.address = address
+        user.about = about
+        user.registered = registered
+        user.latitude = latitude
+        user.longitude = longitude
+        for tag in tags {
+            user.tags.append(tag)
+        }
+        for friendId in friends.map({ $0.id }) {
+            user.friends.append(friendId)
+        }
+        user.favoriteFruit = favoriteFruit
         
         return user
     }
 }
 
-class EyeColorRealm: Object, Decodable {
-    @objc dynamic var id: Int
-    @objc dynamic var name: String
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
+class Friends: Object {
+    let friends = List<idFriend>()
 }
 
-class FavoriteFruitRealm: Object, Decodable {
-    @objc dynamic var id: Int
-    @objc dynamic var name: String
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-class FriendRealm: Object, Decodable {
-    @objc dynamic var id: Int
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-}
-
-class GenderRealm: Object, Decodable {
-    @objc dynamic var id: Int
-    @objc dynamic var name: String
-    
-    override static func primaryKey() -> String? {
-        return "id"
-    }
+class idFriend: Object {
+    @objc dynamic var id = Int()
 }

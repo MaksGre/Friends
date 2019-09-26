@@ -15,7 +15,7 @@ typealias FriendsHandler = (User) -> Void
 
 protocol MainInteractor: AnyObject {
     func subscribeOnUsers(handler: @escaping FriendsHandler)
-    func loadData()
+    func loadAndCheckData()
 }
 
 // MARK: - InteractorImpl
@@ -35,12 +35,16 @@ final class MainInteractorImpl: MainInteractor {
         //.. subscribe on realm
     }
     
-    func loadData() {
+    func loadAndCheckData() {
         networkService.fetchUsers { users in
             switch users {
             case .success(let value): UserItem.users = value
             case .failure(let error): print(error)
             }
+            if let users = UserItem.users {
+                StorageServiceImpl.checkAndSaveUsers(users)
+            }
         }
     }
+    
 }
