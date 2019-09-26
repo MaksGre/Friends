@@ -12,7 +12,7 @@ import SnapKit
 class TableViewCell: UITableViewCell {
 
     // MARK: - Private properties
-    
+
     private var descriptionNameLabel = UILabel()
     private var descriptionEmailLabel = UILabel()
     private var descriptionActiveLabel = UILabel()

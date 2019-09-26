@@ -8,4 +8,17 @@
 
 import RealmSwift
 
+typealias SaveUsersCompletion = () -> Void
+
+protocol StorageService: AnyObject {
+    func saveUsers(completion: @escaping SaveUsersCompletion)
+}
+
+final class StorageServiceImpl: StorageService {
+    
+    func saveUsers(completion: @escaping SaveUsersCompletion) {
+        
+    }
+    
+}
 

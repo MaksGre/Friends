@@ -30,15 +30,7 @@ final class MainViewController: UIViewController, MainView {
         
         navigationItem.title = "People"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        view.addSubview(self.tableView)
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: tableCellIdentifier)
-        tableView.dataSource = self
-        tableView.rowHeight = 90
-        tableView.snp.makeConstraints { maker in
-            maker.edges.equalTo(view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        }
-        
+                
         presenter?.didTriggerViewReadyEvent()
     }
     
@@ -47,7 +39,20 @@ final class MainViewController: UIViewController, MainView {
     func reloadData() {
         tableView.reloadData()
     }
+    
     // MARK: - Private func
+    
+    private func configureTableView() {
+        let rowHeight:CGFloat = 90
+        
+        view.addSubview(self.tableView)
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: tableCellIdentifier)
+        tableView.dataSource = self
+        tableView.rowHeight = rowHeight
+        tableView.snp.makeConstraints { maker in
+            maker.edges.equalTo(view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        }
+    }
     
 }
 

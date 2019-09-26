@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserForJSON.swift
 //  Friends
 //
 //  Created by Maksim Grebenozhko on 19/09/2019.
