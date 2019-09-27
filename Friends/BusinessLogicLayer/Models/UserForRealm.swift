@@ -11,7 +11,6 @@ import RealmSwift
 
 class UserRealm: Object {
     @objc dynamic var id = Int()
-    @objc dynamic var date = Date()
     @objc dynamic var guid = String()
     @objc dynamic var isActive = Bool()
     @objc dynamic var balance = String()
@@ -44,7 +43,6 @@ class UserRealm: Object {
         
         let user = UserRealm()
         user.id = id
-        user.date = Date()
         user.guid = guid
         user.isActive = isActive
         user.balance = balance
@@ -63,8 +61,8 @@ class UserRealm: Object {
         for tag in tags {
             user.tags.append(tag)
         }
-        for friendId in friends.map({ $0.id }) {
-            user.friends.append(friendId)
+        for friend in friends {
+            user.friends.append(friend.id)
         }
         user.favoriteFruit = favoriteFruit
         
@@ -72,10 +70,6 @@ class UserRealm: Object {
     }
 }
 
-class Friends: Object {
-    let friends = List<idFriend>()
-}
-
-class idFriend: Object {
-    @objc dynamic var id = Int()
+class SaveDate: Object {
+    @objc dynamic var dateTime = Date()
 }

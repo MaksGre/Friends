@@ -33,7 +33,7 @@ final class MainPresenterImpl: MainPresenter {
     // MARK: - MainPresenter
     
     func didTriggerViewReadyEvent() {
-        interactor.loadAndCheckData()
+        interactor.checkAndFetchData()
         print(Date())
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.view?.reloadData()

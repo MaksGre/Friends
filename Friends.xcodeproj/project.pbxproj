@@ -61,6 +61,7 @@
 		B5A08BAC233B8DEE00832832 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		B5A08BAD233B8DEE00832832 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		B5A08C01233CE78300832832 /* UserForJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserForJSON.swift; sourceTree = "<group>"; };
+		B5A08C03233DCC6400832832 /* Trash.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Trash.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5E7741F2338804400CB7DA2 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		B5E774262338868500CB7DA2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +155,7 @@
 				B5A08B632338871600832832 /* Models */,
 				B530D8AF23337BAE00A1AA4F /* NetworkService.swift */,
 				B5A08B8C233B889D00832832 /* StorageService.swift */,
+				B5A08C03233DCC6400832832 /* Trash.playground */,
 			);
 			path = BusinessLogicLayer;
 			sourceTree = "<group>";
