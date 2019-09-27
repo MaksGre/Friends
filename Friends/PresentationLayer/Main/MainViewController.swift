@@ -10,18 +10,23 @@ import UIKit
 
 protocol MainView: AnyObject {
     var presenter: MainPresenter? { get set }
+    var users: UserItem? { get set }
     func reloadData()
 }
 
 // MARK: - ViewImpl
 
 final class MainViewController: UIViewController, MainView {
-    
+
     // MARK: - Private properties
     
-    let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-    let tableCellIdentifier = String(describing: TableViewCell.self)
+    private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
+    private let tableCellIdentifier = String(describing: TableViewCell.self)
+    
+    // MARK: - Public properties
+    
     var presenter: MainPresenter?
+    var users: UserItem?
     
     // MARK: - Override methods
     

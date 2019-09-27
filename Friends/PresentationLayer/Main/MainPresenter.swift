@@ -35,7 +35,9 @@ final class MainPresenterImpl: MainPresenter {
     func didTriggerViewReadyEvent() {
         interactor.loadAndCheckData()
         interactor.subscribeOnUsers { [weak self] users in
-            //let usersItem = UserItem(name: <#T##String#>, email: <#T##String#>, isActive: <#T##Bool#>)
+            let userItem = users.map {UserItem(user: $0)}
+            self?.view?.users = userItem
+            self?.view?.reloadData()
         }
     }
     
