@@ -9,5 +9,17 @@
 import Foundation
 
 class UserItem {
-    static var users: [User]? = []
+    private var name = ""
+    private var email = ""
+    private var isActive = false
+        
+    convenience init(user: RealmUser) {
+        let userItem = UserItem()
+        
+        userItem.name = user.name
+        userItem.email = user.email
+        userItem.isActive = user.isActive
+        
+        self.init()
+    }
 }

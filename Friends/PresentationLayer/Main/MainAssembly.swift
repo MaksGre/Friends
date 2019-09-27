@@ -12,7 +12,7 @@ final class MainAssembly {
     
     static func createModule() -> UIViewController {
         let view = MainViewController()
-        let interactor = MainInteractorImpl(networkService: NetworkServiceImpl())
+        let interactor = MainInteractorImpl(networkService: NetworkServiceImpl(), storageService: StorageServiceImpl())
         let router = MainRouterImpl()
         let presenter = MainPresenterImpl(view: view, interactor: interactor, router: router)
         

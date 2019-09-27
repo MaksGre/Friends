@@ -9,54 +9,77 @@
 import Foundation
 import RealmSwift
 
-typealias SaveUsersCompletion = () -> Void
-
 protocol StorageService: AnyObject {
-    static func saveUsers(_ users: [User])
+    func store(users: [RealmUser])
+    func subscribe(completion: @escaping (Results<RealmUser>) -> Void)
+    func unsubscribe()
+    func getLastUpdateDate() -> Date?
+    func storeLastUpdateDate(date: Date)
 }
 
 final class StorageServiceImpl: StorageService {
     
-    // MARK: - Static properties
+    // MARK: - Private properties
     
-    static let constStorageTime: TimeInterval = 300
+    private var token: NotificationToken?
     
-    // MARK: - Static functions
+    // MARK: - StorageService
     
-    static func saveUsers(_ users: [User]) {
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
-        let realmInstance = try! Realm()
-        try! realmInstance.write {
-            for user in users {
-                let userRealm = UserRealm.getUserObject(id: user.id, guid: user.guid,
-                    isActive: user.isActive, balance: user.balance, age: user.age,
-                    eyeColor: user.eyeColor.rawValue, name: user.name, gender: user.gender.rawValue,
-                    company: user.company, email: user.email, phone: user.phone,
-                    address: user.address, about: user.about, registered: user.registered,
-                    latitude: user.latitude, longitude: user.longitude, tags: user.tags,
-                    friends: user.friends, favoriteFruit: user.favoriteFruit.rawValue)
-                realmInstance.add(userRealm)
+    func store(users: [RealmUser]) {
+        let realm = getRealm()
+        do {
+            try realm.write {
+                let existedUsers = realm.objects(RealmUser.self)
+                realm.delete(existedUsers)
+                realm.add(users, update: .modified)
             }
-            realmInstance.add(SaveDate())
-        }
-        print("\(Date()) The data stored")
-        DispatchQueue.main.asyncAfter(deadline: .now() + constStorageTime) {
-            deleteData()
-            print("\(Date()) Data deleted")
+        } catch {
+            assertionFailure(error.localizedDescription)
         }
     }
     
-    static func storageTimeIsOver() -> Bool {
-        let realmInstance = try! Realm()
-        guard let dateTime = realmInstance.objects(SaveDate.self).first else { return true }
-        print("\(Date()) Check save time")
-        return Date().timeIntervalSince(dateTime.dateTime) > constStorageTime
+    func subscribe(completion: @escaping (Results<RealmUser>) -> Void) {
+        token = getRealm().objects(RealmUser.self).observe { changes in
+            switch changes {
+            case .error(let error):
+                print(error)
+            case .initial(let users), .update(let users, _, _, _):
+                completion(users)
+            }
+        }
     }
     
-    static func deleteData() {
-        let realmInstance = try! Realm()
-        try! realmInstance.write {
-            realmInstance.deleteAll()
+    func unsubscribe() {
+        token?.invalidate()
+    }
+    
+    func getLastUpdateDate() -> Date? {
+        let realm = getRealm()
+        guard let lastUpdateDate = realm.objects(SaveDate.self).first
+            else { return nil }
+        return lastUpdateDate.dateTime
+    }
+    
+    func storeLastUpdateDate(date: Date) {
+        let realm = getRealm()
+        do {
+            try realm.write {
+                let saveDate = realm.objects(SaveDate.self)
+                realm.delete(saveDate)
+                realm.add(SaveDate(), update: .modified)
+            }
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
+    }
+    
+    // MARK: - Private functions
+    
+    private func getRealm() -> Realm {
+        do {
+            return try Realm()
+        } catch {
+            fatalError(error.localizedDescription)
         }
     }
 }

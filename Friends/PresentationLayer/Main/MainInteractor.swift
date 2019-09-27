@@ -7,44 +7,72 @@
 //
 
 import Foundation
-
-typealias UserHandler = (User) -> Void
-typealias FriendsHandler = (User) -> Void
+import RealmSwift
 
 // MARK: - Interactor
 
 protocol MainInteractor: AnyObject {
-    func subscribeOnUsers(handler: @escaping FriendsHandler)
-    func checkAndFetchData()
+    func subscribeOnUsers(completion: @escaping (Results<RealmUser>) -> Void)
+    func loadAndCheckData()
 }
 
 // MARK: - InteractorImpl
 
 final class MainInteractorImpl: MainInteractor {
+
+    private enum Constants {
+        static let dataLifeTime = 300
+    }
     
     private let networkService: NetworkService
     
-    init(networkService: NetworkService) {
+    private let storageService: StorageService
+    
+    init(networkService: NetworkService, storageService: StorageService) {
         self.networkService = networkService
-        // process users lifetime here
+        self.storageService = storageService
+    }
+    
+    deinit {
+        storageService.unsubscribe()
     }
     
     // MARK: - MainInteractor
     
-    func subscribeOnUsers(handler: @escaping UserHandler) {
-        //.. subscribe on realm
+    func subscribeOnUsers(completion: @escaping (Results<RealmUser>) -> Void) {
+        storageService.subscribe(completion: completion)
     }
     
-    func checkAndFetchData() {
-        if StorageServiceImpl.storageTimeIsOver() {
-            networkService.fetchUsers { users in
-                switch users {
-                case .success(let value): UserItem.users = value
-                case .failure(let error): print(error)
+    func loadAndCheckData() {
+        if let lastUpdateDate = storageService.getLastUpdateDate() {
+            let timeInterval = Int(Date().timeIntervalSince(lastUpdateDate))
+            if timeInterval > Constants.dataLifeTime {
+                loadUsers()
+            } else {
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(timeInterval)) {
+                    [weak self] in
+                    self?.loadUsers()
                 }
-                if let users = UserItem.users {
-                    StorageServiceImpl.saveUsers(users)
-                }
+            }
+        } else {
+            loadUsers()
+        }
+    }
+    
+    // MARK: - Private functions
+    
+    private func loadUsers() {
+        networkService.fetchUsers { [weak self] users in
+            guard let self = self else { return }
+            switch users {
+            case .success(let users):
+                self.storageService.store(users: users.map { RealmUser(user: $0) })
+                self.storageService.storeLastUpdateDate(date: Date())
+            case .failure(let error):
+                print(error)
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(Constants.dataLifeTime)) { [weak self] in
+                self?.loadUsers()
             }
         }
     }

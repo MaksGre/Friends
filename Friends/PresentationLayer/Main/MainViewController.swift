@@ -50,10 +50,9 @@ final class MainViewController: UIViewController, MainView {
         tableView.dataSource = self
         tableView.rowHeight = rowHeight
         tableView.snp.makeConstraints { maker in
-            maker.edges.equalTo(view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+            maker.edges.equalToSuperview()
         }
     }
-    
 }
 
 extension MainViewController: UITableViewDataSource {
@@ -61,19 +60,20 @@ extension MainViewController: UITableViewDataSource {
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let count = UserItem.users?.count else { return 0 }
-        
-        return count
+//        guard let count = UserItem.users?.count else { return 0 }
+//
+//        return count
+        return 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath) as! TableViewCell
-        if let user = UserItem.users?[indexPath.row] {
-            cell.configureCellBy(user)
-            if user.isActive {
-                cell.accessoryType = .disclosureIndicator
-            }
-        }
+//        if let user = UserItem.users?[indexPath.row] {
+//            cell.configureCellBy(user)
+//            if user.isActive {
+//                cell.accessoryType = .disclosureIndicator
+//            }
+//        }
         
         return cell
     }

@@ -14,3 +14,9 @@
 //    guard idUser == nil else { return false }
 //    return true
 //}
+//static func deleteData() {
+//    let realmInstance = try! Realm()
+//    try! realmInstance.write {
+//        realmInstance.deleteAll()
+//    }
+//}
