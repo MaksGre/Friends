@@ -14,7 +14,7 @@
 		B530D8AD23335D1E00A1AA4F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B530D8AC23335D1E00A1AA4F /* Alamofire.framework */; };
 		B530D8B023337BAE00A1AA4F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8AF23337BAE00A1AA4F /* NetworkService.swift */; };
 		B530D8B223337E6100A1AA4F /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8B123337E6100A1AA4F /* RealmUser.swift */; };
-		B530D8B423338D8400A1AA4F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8B323338D8400A1AA4F /* TableViewCell.swift */; };
+		B530D8B423338D8400A1AA4F /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8B323338D8400A1AA4F /* MainTableViewCell.swift */; };
 		B530D8D92334BAC800A1AA4F /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8D82334BAC800A1AA4F /* MainAssembly.swift */; };
 		B530D8DB23354F1900A1AA4F /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8DA23354F1900A1AA4F /* MainInteractor.swift */; };
 		B530D8DD2335506200A1AA4F /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8DC2335506200A1AA4F /* MainPresenter.swift */; };
@@ -29,9 +29,7 @@
 		B5B3C7802340BCAB00D7080F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C7772340BCAB00D7080F /* DetailsViewController.swift */; };
 		B5B3C7812340BCAB00D7080F /* DetailsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C7782340BCAB00D7080F /* DetailsAssembly.swift */; };
 		B5B3C7822340BCAB00D7080F /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C7792340BCAB00D7080F /* DetailsInteractor.swift */; };
-		B5B3C7832340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C77A2340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift */; };
-		B5B3C7842340BCAB00D7080F /* DetailsTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C77B2340BCAB00D7080F /* DetailsTableViewManager.swift */; };
-		B5B3C7862340BCAB00D7080F /* DetailsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C77D2340BCAB00D7080F /* DetailsState.swift */; };
+		B5B3C78C2340C84100D7080F /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C78B2340C84100D7080F /* DetailTableViewCell.swift */; };
 		B5E774202338804400CB7DA2 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E7741F2338804400CB7DA2 /* MainRouter.swift */; };
 		B5E774272338868500CB7DA2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E774262338868500CB7DA2 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
@@ -57,7 +55,7 @@
 		B530D8AC23335D1E00A1AA4F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		B530D8AF23337BAE00A1AA4F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B530D8B123337E6100A1AA4F /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
-		B530D8B323338D8400A1AA4F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		B530D8B323338D8400A1AA4F /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		B530D8D82334BAC800A1AA4F /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		B530D8DA23354F1900A1AA4F /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		B530D8DC2335506200A1AA4F /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
@@ -73,9 +71,7 @@
 		B5B3C7772340BCAB00D7080F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		B5B3C7782340BCAB00D7080F /* DetailsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAssembly.swift; sourceTree = "<group>"; };
 		B5B3C7792340BCAB00D7080F /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
-		B5B3C77A2340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsPresenter+DetailsInteractorOutput.swift"; sourceTree = "<group>"; };
-		B5B3C77B2340BCAB00D7080F /* DetailsTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewManager.swift; sourceTree = "<group>"; };
-		B5B3C77D2340BCAB00D7080F /* DetailsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsState.swift; sourceTree = "<group>"; };
+		B5B3C78B2340C84100D7080F /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		B5E7741F2338804400CB7DA2 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		B5E774262338868500CB7DA2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,14 +181,11 @@
 		B5B3C7742340BAFE00D7080F /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				B5B3C7752340BCAB00D7080F /* DetailsPresenter.swift */,
-				B5B3C7762340BCAB00D7080F /* DetailsRouter.swift */,
-				B5B3C7772340BCAB00D7080F /* DetailsViewController.swift */,
 				B5B3C7782340BCAB00D7080F /* DetailsAssembly.swift */,
 				B5B3C7792340BCAB00D7080F /* DetailsInteractor.swift */,
-				B5B3C77A2340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift */,
-				B5B3C77B2340BCAB00D7080F /* DetailsTableViewManager.swift */,
-				B5B3C77D2340BCAB00D7080F /* DetailsState.swift */,
+				B5B3C7772340BCAB00D7080F /* DetailsViewController.swift */,
+				B5B3C7762340BCAB00D7080F /* DetailsRouter.swift */,
+				B5B3C7752340BCAB00D7080F /* DetailsPresenter.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -227,7 +220,8 @@
 		B5E774242338831200CB7DA2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B530D8B323338D8400A1AA4F /* TableViewCell.swift */,
+				B530D8B323338D8400A1AA4F /* MainTableViewCell.swift */,
+				B5B3C78B2340C84100D7080F /* DetailTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -368,15 +362,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B530D8B423338D8400A1AA4F /* TableViewCell.swift in Sources */,
+				B5B3C78C2340C84100D7080F /* DetailTableViewCell.swift in Sources */,
+				B530D8B423338D8400A1AA4F /* MainTableViewCell.swift in Sources */,
 				B5A08B8D233B889D00832832 /* StorageService.swift in Sources */,
 				B530D8D92334BAC800A1AA4F /* MainAssembly.swift in Sources */,
 				B530D8B223337E6100A1AA4F /* RealmUser.swift in Sources */,
-				B5B3C7862340BCAB00D7080F /* DetailsState.swift in Sources */,
 				B5B3C7822340BCAB00D7080F /* DetailsInteractor.swift in Sources */,
 				B530D8DD2335506200A1AA4F /* MainPresenter.swift in Sources */,
-				B5B3C7842340BCAB00D7080F /* DetailsTableViewManager.swift in Sources */,
-				B5B3C7832340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift in Sources */,
 				B5E774202338804400CB7DA2 /* MainRouter.swift in Sources */,
 				B5B3C7812340BCAB00D7080F /* DetailsAssembly.swift in Sources */,
 				B530D8B023337BAE00A1AA4F /* NetworkService.swift in Sources */,

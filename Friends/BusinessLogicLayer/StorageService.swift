@@ -15,6 +15,7 @@ protocol StorageService: AnyObject {
     func unsubscribe()
     func getLastUpdateDate() -> Date?
     func storeLastUpdateDate(date: Date)
+    func loadUser(index: Int) -> User
 }
 
 final class StorageServiceImpl: StorageService {
@@ -95,6 +96,11 @@ final class StorageServiceImpl: StorageService {
 //        } catch {
 //            assertionFailure(error.localizedDescription)
 //        }
+    }
+    
+    func loadUser(index: Int) -> User {
+        let realmUser = getRealm().objects(RealmUser.self).filter("id = \(index)")
+        return 
     }
     
     // MARK: - Private functions

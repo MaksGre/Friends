@@ -9,22 +9,16 @@
 import UIKit
 
 protocol DetailsRouter: AnyObject {
-    func dismissView()
+    func showUserDetails()
 }
+
+// MARK: - DetailsRouter
 
 final class DetailsRouterImpl: DetailsRouter {
 
     weak var viewController: UIViewController?
 
-    private let serviceLocator: ServiceLocator
-
-    init(serviceLocator: ServiceLocator) {
-        self.serviceLocator = serviceLocator
-    }
-
-    // MARK: - DetailsRouter
-
-    func dismissView() {
-
+    func showUserDetails() {
+        //let vc =
     }
 }

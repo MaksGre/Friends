@@ -12,6 +12,7 @@ import Foundation
 
 protocol  MainPresenter: AnyObject {
     func didTriggerViewReadyEvent()
+    func didSelectRow(index: Int)
 }
 
 // MARK: - PresenterImpl
@@ -47,6 +48,10 @@ final class MainPresenterImpl: MainPresenter {
             self?.view?.users = userItems
             self?.view?.reloadData()
         }
+    }
+    
+    func didSelectRow(index: Int) {
+        router.showUserDetails(index: index)
     }
     
 }

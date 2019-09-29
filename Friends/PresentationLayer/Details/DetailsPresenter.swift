@@ -18,26 +18,17 @@ final class DetailsPresenterImpl: DetailsPresenter {
     var interactor: DetailsInteractor
     let router: DetailsRouter
 
-    // MARK: - State
-
-    var state: DetailsState
-
     // MARK: - Init
 
-    init(view: DetailsView,
-         interactor: DetailsInteractor,
-         router: DetailsRouter,
-         state: DetailsState) {
-
+    init(view: DetailsView, interactor: DetailsInteractor, router: DetailsRouter) {
         self.view = view
         self.interactor = interactor
         self.router = router
-        self.state = state
     }
 
     // MARK: - DetailsPresenter
 
     func didTriggerViewDidLoad() {
-
+        
     }
 }

@@ -10,18 +10,15 @@ import UIKit
 
 final class DetailsAssembly {
 
-    static func createModule(serviceLocator: ServiceLocator) -> UIViewController {
+    static func createModule() -> UIViewController {
         let view = DetailsViewController()
         let interactor = DetailsInteractorImpl()
-        let router = DetailsRouterImpl(serviceLocator: serviceLocator)
-        let state = DetailsState()
+        let router = DetailsRouterImpl()
         let presenter = DetailsPresenterImpl(view: view,
                                              interactor: interactor,
-                                             router: router,
-                                             state: state)
+                                             router: router)
 
         view.presenter = presenter
-        interactor.output = presenter
         router.viewController = view
 
         return view

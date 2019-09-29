@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class TableViewCell: UITableViewCell {
+class MainTableViewCell: UITableViewCell {
 
     // MARK: - Private properties
 

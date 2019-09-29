@@ -23,6 +23,26 @@ struct User: Decodable {
     let tags: [String]
     let friends: [Friend]
     let favoriteFruit: FavoriteFruit
+    
+    init(realmUser: RealmUser) {
+        self.id = realmUser.id
+        self.guid = realmUser.guid
+        self.isActive = realmUser.isActive
+        self.balance = realmUser.balance
+        self.age = realmUser.age
+        self.eyeColor = realmUser.eyeColor
+        self.name = realmUser.name
+        self.gender = realmUser.gender
+        self.company = realmUser.company
+        self.email = realmUser.email
+        self.phone = realmUser.phone
+        self.address = realmUser.address
+        self.latitude = realmUser.latitude
+        self.longitude = realmUser.longitude
+        self.tags = realmUser.tags
+        self.friends = realmUser.friends
+        self.favoriteFruit = realmUser.favoriteFruit
+    }
 }
 
 enum EyeColor: String, Decodable {

@@ -14,6 +14,7 @@ import RealmSwift
 protocol MainInteractor: AnyObject {
     func subscribeOnUsers(completion: @escaping (Results<RealmUser>) -> Void)
     func loadAndCheckData()
+    func loadSelectedUser(index: Int) -> User
 }
 
 // MARK: - InteractorImpl
@@ -57,6 +58,10 @@ final class MainInteractorImpl: MainInteractor {
         } else {
             loadUsers()
         }
+    }
+    
+    func loadSelectedUser(index: Int) -> User {
+        return User()
     }
     
     // MARK: - Private functions

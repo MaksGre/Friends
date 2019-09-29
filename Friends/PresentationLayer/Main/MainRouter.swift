@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Router
 
 protocol MainRouter: AnyObject {
-    func showUserDetails()
+    func showUserDetails(index: Int)
 }
 
 // MARK: - RouterImpl
@@ -20,9 +20,8 @@ final class MainRouterImpl: MainRouter {
     
     weak var viewController: UIViewController?
     
-    // MARK: -
-    
-    func showUserDetails() {
-        
+    func showUserDetails(index: Int) {
+        let vc = DetailsAssembly.createModule()
+        viewController?.show(vc, sender: self)
     }
 }

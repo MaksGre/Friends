@@ -21,7 +21,7 @@ final class MainViewController: UIViewController, MainView {
     // MARK: - Private properties
     
     private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-    private let tableCellIdentifier = String(describing: TableViewCell.self)
+    private let tableCellIdentifier = String(describing: MainViewController.self)
     
     // MARK: - Public properties
     
@@ -41,20 +41,21 @@ final class MainViewController: UIViewController, MainView {
         presenter?.didTriggerViewReadyEvent()
     }
     
-    // MARK: - Public func
+    // MARK: - Public functions
     
     func reloadData() {
         tableView.reloadData()
     }
     
-    // MARK: - Private func
+    // MARK: - Private functions
     
     private func configureTableView() {
         let rowHeight:CGFloat = 90
         
         view.addSubview(self.tableView)
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: tableCellIdentifier)
+        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: tableCellIdentifier)
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.rowHeight = rowHeight
         tableView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
@@ -62,7 +63,7 @@ final class MainViewController: UIViewController, MainView {
     }
 }
 
-extension MainViewController: UITableViewDataSource {
+extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     
     // MARK: - Table view data source
     
@@ -73,7 +74,7 @@ extension MainViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath) as! MainTableViewCell
         if let user = users?[indexPath.row] {
             cell.configureCellBy(user)
             if user.isActive {
@@ -83,4 +84,15 @@ extension MainViewController: UITableViewDataSource {
         
         return cell
     }
+    
+    // MARK: - UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let user = users?[indexPath.row] else { return }
+        
+        if user.isActive {
+            presenter?.didSelectRow(index: indexPath.row)
+        }
+    }
+    
 }
