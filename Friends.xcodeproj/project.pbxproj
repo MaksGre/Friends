@@ -15,7 +15,6 @@
 		B530D8B023337BAE00A1AA4F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8AF23337BAE00A1AA4F /* NetworkService.swift */; };
 		B530D8B223337E6100A1AA4F /* RealmUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8B123337E6100A1AA4F /* RealmUser.swift */; };
 		B530D8B423338D8400A1AA4F /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8B323338D8400A1AA4F /* TableViewCell.swift */; };
-		B530D8D42333A0BC00A1AA4F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8D32333A0BC00A1AA4F /* DataManager.swift */; };
 		B530D8D92334BAC800A1AA4F /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8D82334BAC800A1AA4F /* MainAssembly.swift */; };
 		B530D8DB23354F1900A1AA4F /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8DA23354F1900A1AA4F /* MainInteractor.swift */; };
 		B530D8DD2335506200A1AA4F /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8DC2335506200A1AA4F /* MainPresenter.swift */; };
@@ -25,6 +24,14 @@
 		B5A08BAE233B8DEE00832832 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A08BAC233B8DEE00832832 /* Realm.framework */; };
 		B5A08BAF233B8DEE00832832 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A08BAD233B8DEE00832832 /* RealmSwift.framework */; };
 		B5A08C02233CE78300832832 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A08C01233CE78300832832 /* User.swift */; };
+		B5B3C77E2340BCAB00D7080F /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C7752340BCAB00D7080F /* DetailsPresenter.swift */; };
+		B5B3C77F2340BCAB00D7080F /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C7762340BCAB00D7080F /* DetailsRouter.swift */; };
+		B5B3C7802340BCAB00D7080F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C7772340BCAB00D7080F /* DetailsViewController.swift */; };
+		B5B3C7812340BCAB00D7080F /* DetailsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C7782340BCAB00D7080F /* DetailsAssembly.swift */; };
+		B5B3C7822340BCAB00D7080F /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C7792340BCAB00D7080F /* DetailsInteractor.swift */; };
+		B5B3C7832340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C77A2340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift */; };
+		B5B3C7842340BCAB00D7080F /* DetailsTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C77B2340BCAB00D7080F /* DetailsTableViewManager.swift */; };
+		B5B3C7862340BCAB00D7080F /* DetailsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C77D2340BCAB00D7080F /* DetailsState.swift */; };
 		B5E774202338804400CB7DA2 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E7741F2338804400CB7DA2 /* MainRouter.swift */; };
 		B5E774272338868500CB7DA2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E774262338868500CB7DA2 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +58,6 @@
 		B530D8AF23337BAE00A1AA4F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B530D8B123337E6100A1AA4F /* RealmUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmUser.swift; sourceTree = "<group>"; };
 		B530D8B323338D8400A1AA4F /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		B530D8D32333A0BC00A1AA4F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		B530D8D82334BAC800A1AA4F /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		B530D8DA23354F1900A1AA4F /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		B530D8DC2335506200A1AA4F /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
@@ -62,6 +68,14 @@
 		B5A08BAD233B8DEE00832832 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		B5A08C01233CE78300832832 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B5A08C03233DCC6400832832 /* Trash.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Trash.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		B5B3C7752340BCAB00D7080F /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		B5B3C7762340BCAB00D7080F /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
+		B5B3C7772340BCAB00D7080F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		B5B3C7782340BCAB00D7080F /* DetailsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAssembly.swift; sourceTree = "<group>"; };
+		B5B3C7792340BCAB00D7080F /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
+		B5B3C77A2340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailsPresenter+DetailsInteractorOutput.swift"; sourceTree = "<group>"; };
+		B5B3C77B2340BCAB00D7080F /* DetailsTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewManager.swift; sourceTree = "<group>"; };
+		B5B3C77D2340BCAB00D7080F /* DetailsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsState.swift; sourceTree = "<group>"; };
 		B5E7741F2338804400CB7DA2 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		B5E774262338868500CB7DA2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,7 +127,6 @@
 				B5E774252338833700CB7DA2 /* ApplicationLayer */,
 				B5A08B62233886FE00832832 /* BusinessLogicLayer */,
 				B5E774212338829400CB7DA2 /* PresentationLayer */,
-				B530D8D32333A0BC00A1AA4F /* DataManager.swift */,
 			);
 			path = Friends;
 			sourceTree = "<group>";
@@ -169,11 +182,27 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		B5B3C7742340BAFE00D7080F /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				B5B3C7752340BCAB00D7080F /* DetailsPresenter.swift */,
+				B5B3C7762340BCAB00D7080F /* DetailsRouter.swift */,
+				B5B3C7772340BCAB00D7080F /* DetailsViewController.swift */,
+				B5B3C7782340BCAB00D7080F /* DetailsAssembly.swift */,
+				B5B3C7792340BCAB00D7080F /* DetailsInteractor.swift */,
+				B5B3C77A2340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift */,
+				B5B3C77B2340BCAB00D7080F /* DetailsTableViewManager.swift */,
+				B5B3C77D2340BCAB00D7080F /* DetailsState.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		B5E774212338829400CB7DA2 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
 				B5E77422233882CD00CB7DA2 /* Common */,
 				B530D8D72334BAAB00A1AA4F /* Main */,
+				B5B3C7742340BAFE00D7080F /* Details */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -341,17 +370,24 @@
 			files = (
 				B530D8B423338D8400A1AA4F /* TableViewCell.swift in Sources */,
 				B5A08B8D233B889D00832832 /* StorageService.swift in Sources */,
-				B530D8D42333A0BC00A1AA4F /* DataManager.swift in Sources */,
 				B530D8D92334BAC800A1AA4F /* MainAssembly.swift in Sources */,
 				B530D8B223337E6100A1AA4F /* RealmUser.swift in Sources */,
+				B5B3C7862340BCAB00D7080F /* DetailsState.swift in Sources */,
+				B5B3C7822340BCAB00D7080F /* DetailsInteractor.swift in Sources */,
 				B530D8DD2335506200A1AA4F /* MainPresenter.swift in Sources */,
+				B5B3C7842340BCAB00D7080F /* DetailsTableViewManager.swift in Sources */,
+				B5B3C7832340BCAB00D7080F /* DetailsPresenter+DetailsInteractorOutput.swift in Sources */,
 				B5E774202338804400CB7DA2 /* MainRouter.swift in Sources */,
+				B5B3C7812340BCAB00D7080F /* DetailsAssembly.swift in Sources */,
 				B530D8B023337BAE00A1AA4F /* NetworkService.swift in Sources */,
 				B5A08B65233889C900832832 /* UserItem.swift in Sources */,
 				B530D88C23334C7A00A1AA4F /* AppDelegate.swift in Sources */,
+				B5B3C77E2340BCAB00D7080F /* DetailsPresenter.swift in Sources */,
 				B5A08C02233CE78300832832 /* User.swift in Sources */,
 				B530D8DB23354F1900A1AA4F /* MainInteractor.swift in Sources */,
 				B5E774272338868500CB7DA2 /* MainViewController.swift in Sources */,
+				B5B3C77F2340BCAB00D7080F /* DetailsRouter.swift in Sources */,
+				B5B3C7802340BCAB00D7080F /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

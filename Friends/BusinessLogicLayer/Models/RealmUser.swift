@@ -41,28 +41,27 @@ class RealmUser: Object {
     }
  
     convenience init(user: User) {
-        let realmUser = RealmUser()
-        
-        realmUser.id = user.id
-        realmUser.guid = user.guid
-        realmUser.isActive = user.isActive
-        realmUser.balance = user.balance
-        realmUser.age = user.age
-        realmUser.eyeColorString = user.eyeColor.rawValue
-        realmUser.name = user.name
-        realmUser.gender = user.gender.rawValue
-        realmUser.company = user.company
-        realmUser.email = user.email
-        realmUser.phone = user.phone
-        realmUser.address = user.address
-        realmUser.about = user.about
-        realmUser.registered = user.registered
-        realmUser.latitude = user.latitude
-        realmUser.longitude = user.longitude
-        realmUser.tags.append(objectsIn: user.tags)
-        realmUser.friends.append(objectsIn: user.friends.map { $0.id })
-        realmUser.favoriteFruitString = user.favoriteFruit.rawValue
         self.init()
+        
+        self.id = user.id
+        self.guid = user.guid
+        self.isActive = user.isActive
+        self.balance = user.balance
+        self.age = user.age
+        self.eyeColorString = user.eyeColor.rawValue
+        self.name = user.name
+        self.gender = user.gender.rawValue
+        self.company = user.company
+        self.email = user.email
+        self.phone = user.phone
+        self.address = user.address
+        self.about = user.about
+        self.registered = user.registered
+        self.latitude = user.latitude
+        self.longitude = user.longitude
+        self.tags.append(objectsIn: user.tags)
+        self.friends.append(objectsIn: user.friends.map { $0.id })
+        self.favoriteFruitString = user.favoriteFruit.rawValue
     }
 }
 

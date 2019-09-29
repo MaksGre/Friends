@@ -35,8 +35,16 @@ final class MainPresenterImpl: MainPresenter {
     func didTriggerViewReadyEvent() {
         interactor.loadAndCheckData()
         interactor.subscribeOnUsers { [weak self] users in
-            let userItem = users.map {UserItem(user: $0)}
-            self?.view?.users = userItem
+            //let userItems = users.map {UserItem(user: $0)}
+            var userItems: [UserItem] = []
+            for user in users {
+                let userItem = UserItem()
+                userItem.name = user.name
+                userItem.email = user.email
+                userItem.isActive = user.isActive
+                userItems.append(userItem)
+            }
+            self?.view?.users = userItems
             self?.view?.reloadData()
         }
     }

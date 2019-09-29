@@ -80,7 +80,7 @@ class TableViewCell: UITableViewCell {
         }
     }
     
-    func configureCellBy(_ user: User) {
+    func configureCellBy(_ user: UserItem) {
         valueNameLabel.text = user.name
         valueEmailLabel.text = user.email
         valueActiveLabel.text = String(user.isActive)

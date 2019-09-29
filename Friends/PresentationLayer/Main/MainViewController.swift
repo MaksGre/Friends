@@ -10,7 +10,7 @@ import UIKit
 
 protocol MainView: AnyObject {
     var presenter: MainPresenter? { get set }
-    var users: UserItem? { get set }
+    var users: [UserItem]? { get set }
     func reloadData()
 }
 
@@ -26,7 +26,7 @@ final class MainViewController: UIViewController, MainView {
     // MARK: - Public properties
     
     var presenter: MainPresenter?
-    var users: UserItem?
+    var users: [UserItem]?
     
     // MARK: - Override methods
     
@@ -35,7 +35,9 @@ final class MainViewController: UIViewController, MainView {
         
         navigationItem.title = "People"
         navigationController?.navigationBar.prefersLargeTitles = true
-                
+        
+        configureTableView()
+        
         presenter?.didTriggerViewReadyEvent()
     }
     
@@ -65,20 +67,19 @@ extension MainViewController: UITableViewDataSource {
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let count = UserItem.users?.count else { return 0 }
-//
-//        return count
-        return 0
+        guard let count = users?.count else { return 0 }
+
+        return count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath) as! TableViewCell
-//        if let user = UserItem.users?[indexPath.row] {
-//            cell.configureCellBy(user)
-//            if user.isActive {
-//                cell.accessoryType = .disclosureIndicator
-//            }
-//        }
+        if let user = users?[indexPath.row] {
+            cell.configureCellBy(user)
+            if user.isActive {
+                cell.accessoryType = .disclosureIndicator
+            }
+        }
         
         return cell
     }
