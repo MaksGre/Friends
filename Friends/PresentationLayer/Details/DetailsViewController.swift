@@ -19,7 +19,6 @@ final class DetailsViewController: UIViewController, DetailsView {
     // MARK: - Private properties
 
     private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-    private let tableCellIdentifier = String(describing: DetailsViewController.self)
     private let countDetails = 15
     //name, age, company, email, phone, address, about, balance, eyeColor,
     //favoriteFruit, registered, latitud, longitude, tags, friends
@@ -48,7 +47,7 @@ final class DetailsViewController: UIViewController, DetailsView {
     
     private func configureTableView() {
         view.addSubview(self.tableView)
-        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: tableCellIdentifier)
+        tableView.register(CellClass: DetailTableViewCell.self)
         tableView.dataSource = self
         tableView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
@@ -65,11 +64,10 @@ extension DetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath) as! DetailTableViewCell
+        let cell = tableView.dequeue(DetailTableViewCell.self)
         if let detailText = user?.name {
             cell.configureCellBy(text: "name", detailText: detailText)
         }
-        
         return cell
     }
 }

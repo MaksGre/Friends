@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A57911F62341F785008D6DC4 /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57911F52341F785008D6DC4 /* UITableView+Extension.swift */; };
 		B530D88C23334C7A00A1AA4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D88B23334C7A00A1AA4F /* AppDelegate.swift */; };
 		B530D89323334C7B00A1AA4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B530D89223334C7B00A1AA4F /* Assets.xcassets */; };
 		B530D89623334C7B00A1AA4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B530D89423334C7B00A1AA4F /* LaunchScreen.storyboard */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A57911F52341F785008D6DC4 /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		B530D88823334C7A00A1AA4F /* Friends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Friends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B530D88B23334C7A00A1AA4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B530D89223334C7B00A1AA4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 		B5E77422233882CD00CB7DA2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A57911F52341F785008D6DC4 /* UITableView+Extension.swift */,
 				B5E77423233882E000CB7DA2 /* ViewModels */,
 				B5E774242338831200CB7DA2 /* Views */,
 			);
@@ -364,6 +367,7 @@
 			files = (
 				B5B3C78C2340C84100D7080F /* DetailTableViewCell.swift in Sources */,
 				B530D8B423338D8400A1AA4F /* MainTableViewCell.swift in Sources */,
+				A57911F62341F785008D6DC4 /* UITableView+Extension.swift in Sources */,
 				B5A08B8D233B889D00832832 /* StorageService.swift in Sources */,
 				B530D8D92334BAC800A1AA4F /* MainAssembly.swift in Sources */,
 				B530D8B223337E6100A1AA4F /* RealmUser.swift in Sources */,

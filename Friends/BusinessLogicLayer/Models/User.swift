@@ -32,15 +32,17 @@ struct User: Decodable {
         self.age = realmUser.age
         self.eyeColor = realmUser.eyeColor
         self.name = realmUser.name
-        self.gender = realmUser.gender
+        self.gender = Gender(rawValue: realmUser.gender) ?? .male
         self.company = realmUser.company
         self.email = realmUser.email
         self.phone = realmUser.phone
         self.address = realmUser.address
+        self.about = realmUser.about
+        self.registered = realmUser.registered
         self.latitude = realmUser.latitude
         self.longitude = realmUser.longitude
-        self.tags = realmUser.tags
-        self.friends = realmUser.friends
+        self.tags = realmUser.tags.map { $0 }
+        self.friends = realmUser.friends.map { Friend(id: $0) }
         self.favoriteFruit = realmUser.favoriteFruit
     }
 }

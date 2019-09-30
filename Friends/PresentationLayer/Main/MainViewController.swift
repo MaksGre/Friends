@@ -21,7 +21,6 @@ final class MainViewController: UIViewController, MainView {
     // MARK: - Private properties
     
     private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-    private let tableCellIdentifier = String(describing: MainViewController.self)
     
     // MARK: - Public properties
     
@@ -53,7 +52,7 @@ final class MainViewController: UIViewController, MainView {
         let rowHeight:CGFloat = 90
         
         view.addSubview(self.tableView)
-        tableView.register(MainTableViewCell.self, forCellReuseIdentifier: tableCellIdentifier)
+        tableView.register(CellClass: MainTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = rowHeight
@@ -74,7 +73,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableCellIdentifier, for: indexPath) as! MainTableViewCell
+        let cell = tableView.dequeue(MainTableViewCell.self)
         if let user = users?[indexPath.row] {
             cell.configureCellBy(user)
             if user.isActive {

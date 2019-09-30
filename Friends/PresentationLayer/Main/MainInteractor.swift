@@ -14,7 +14,7 @@ import RealmSwift
 protocol MainInteractor: AnyObject {
     func subscribeOnUsers(completion: @escaping (Results<RealmUser>) -> Void)
     func loadAndCheckData()
-    func loadSelectedUser(index: Int) -> User
+    func loadSelectedUser(id: Int) -> RealmUser?
 }
 
 // MARK: - InteractorImpl
@@ -26,22 +26,23 @@ final class MainInteractorImpl: MainInteractor {
     }
     
     private let networkService: NetworkService
-    
     private let storageService: StorageService
-    
+
+    // MARK: - Lifecycle
+
     init(networkService: NetworkService, storageService: StorageService) {
         self.networkService = networkService
         self.storageService = storageService
     }
     
     deinit {
-        storageService.unsubscribe()
+        storageService.unsubscribeFromUsers()
     }
     
     // MARK: - MainInteractor
     
     func subscribeOnUsers(completion: @escaping (Results<RealmUser>) -> Void) {
-        storageService.subscribe(completion: completion)
+        storageService.subscribeOnUsers(completion: completion)
     }
     
     func loadAndCheckData() {
@@ -60,8 +61,8 @@ final class MainInteractorImpl: MainInteractor {
         }
     }
     
-    func loadSelectedUser(index: Int) -> User {
-        return User()
+    func loadSelectedUser(id: Int) -> RealmUser? {
+        return storageService.loadUser(id: id)
     }
     
     // MARK: - Private functions
@@ -81,5 +82,4 @@ final class MainInteractorImpl: MainInteractor {
             }
         }
     }
-    
 }
