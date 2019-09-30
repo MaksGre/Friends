@@ -90,7 +90,7 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         guard let user = users?[indexPath.row] else { return }
         
         if user.isActive {
-            presenter?.didSelectRow(index: indexPath.row)
+            presenter?.didSelectUserById(id: user.id)
         }
     }
     

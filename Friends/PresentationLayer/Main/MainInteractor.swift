@@ -14,7 +14,7 @@ import RealmSwift
 protocol MainInteractor: AnyObject {
     func subscribeOnUsers(completion: @escaping (Results<RealmUser>) -> Void)
     func loadAndCheckData()
-    func loadSelectedUser(id: Int) -> RealmUser?
+    func loadSelectedUserBy(_ id: Int) -> RealmUser?
 }
 
 // MARK: - InteractorImpl
@@ -61,7 +61,7 @@ final class MainInteractorImpl: MainInteractor {
         }
     }
     
-    func loadSelectedUser(id: Int) -> RealmUser? {
+    func loadSelectedUserBy(_ id: Int) -> RealmUser? {
         return storageService.loadUser(id: id)
     }
     

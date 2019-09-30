@@ -33,6 +33,7 @@
 		B5B3C78C2340C84100D7080F /* DetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B3C78B2340C84100D7080F /* DetailTableViewCell.swift */; };
 		B5E774202338804400CB7DA2 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E7741F2338804400CB7DA2 /* MainRouter.swift */; };
 		B5E774272338868500CB7DA2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E774262338868500CB7DA2 /* MainViewController.swift */; };
+		B5FED08A234228CD00934916 /* DetailsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FED089234228CD00934916 /* DetailsItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		B5B3C78B2340C84100D7080F /* DetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewCell.swift; sourceTree = "<group>"; };
 		B5E7741F2338804400CB7DA2 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		B5E774262338868500CB7DA2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5FED089234228CD00934916 /* DetailsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A08B64233889C900832832 /* UserItem.swift */,
+				B5FED089234228CD00934916 /* DetailsItem.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				B5A08C02233CE78300832832 /* User.swift in Sources */,
 				B530D8DB23354F1900A1AA4F /* MainInteractor.swift in Sources */,
 				B5E774272338868500CB7DA2 /* MainViewController.swift in Sources */,
+				B5FED08A234228CD00934916 /* DetailsItem.swift in Sources */,
 				B5B3C77F2340BCAB00D7080F /* DetailsRouter.swift in Sources */,
 				B5B3C7802340BCAB00D7080F /* DetailsViewController.swift in Sources */,
 			);

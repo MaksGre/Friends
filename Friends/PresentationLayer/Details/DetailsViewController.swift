@@ -10,7 +10,7 @@ import UIKit
 
 protocol DetailsView: AnyObject {
     var presenter: DetailsPresenter? { get set }
-    var user: User? { get set }
+    var user: DetailsItem? { get set }
     func reloadData()
 }
 
@@ -19,13 +19,12 @@ final class DetailsViewController: UIViewController, DetailsView {
     // MARK: - Private properties
 
     private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-    private let countDetails = 15
     //name, age, company, email, phone, address, about, balance, eyeColor,
     //favoriteFruit, registered, latitud, longitude, tags, friends
     // MARK: - DetailsView
 
     var presenter: DetailsPresenter?
-    var user: User?
+    var user: DetailsItem?
     
     // MARK: - Lifecycle
     
@@ -60,13 +59,23 @@ extension DetailsViewController: UITableViewDataSource {
     // MARK: - Table view data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return countDetails
+        return DetailsItem.detailsCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeue(DetailTableViewCell.self)
-        if let detailText = user?.name {
-            cell.configureCellBy(text: "name", detailText: detailText)
+        let index = indexPath.row
+        if let user = user {
+            switch index {
+            case 0...12:
+                if let (key, value ) = user.details[index].first {
+                    cell.configureCellBy(text: key, detailText: value)
+                } else { return cell }
+            case 13...14:
+                cell.configureCellBy(text: "", detailText: "")
+            default:
+                cell.configureCellBy(text: "", detailText: "")
+            }
         }
         return cell
     }

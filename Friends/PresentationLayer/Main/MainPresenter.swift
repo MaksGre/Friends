@@ -12,7 +12,7 @@ import Foundation
 
 protocol  MainPresenter: AnyObject {
     func didTriggerViewReadyEvent()
-    func didSelectRow(index: Int)
+    func didSelectUserById(id: Int)
 }
 
 // MARK: - PresenterImpl
@@ -41,8 +41,9 @@ final class MainPresenterImpl: MainPresenter {
         }
     }
     
-    func didSelectRow(index: Int) {
-        router.showUserDetails(index: index)
+    func didSelectUserById(id: Int) {
+        guard let user = interactor.loadSelectedUserBy(id) else { return }
+        router.showUserDetails(user)
     }
     
 }

@@ -10,7 +10,7 @@ import UIKit
 
 final class DetailsAssembly {
 
-    static func createModule() -> UIViewController {
+    static func createModule() -> DetailsViewController {
         let view = DetailsViewController()
         let interactor = DetailsInteractorImpl()
         let router = DetailsRouterImpl()

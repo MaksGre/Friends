@@ -8,14 +8,14 @@
 
 import Foundation
 
-class UserItem {
-    var name = ""
-    var email = ""
-    var isActive = false
+struct UserItem {
+    var id: Int
+    var name: String
+    var email: String
+    var isActive: Bool
         
-    convenience init(user: RealmUser) {
-        self.init()
-
+    init(user: RealmUser) {
+        self.id = user.id
         self.name = user.name
         self.email = user.email
         self.isActive = user.isActive
