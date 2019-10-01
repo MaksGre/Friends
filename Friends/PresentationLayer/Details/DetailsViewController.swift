@@ -8,10 +8,23 @@
 
 import UIKit
 
+struct UserDetailsSection {
+    let title: String?
+    let items: [UserDetailsItem]
+}
+
+protocol UserDetailsItem {
+    var didSeletectItem: ((UserDetailsItem) -> Void)? { get set }
+    var CellType: (UITableViewCell & UserDetailsCell).Type { get }
+}
+
+protocol UserDetailsCell {
+    func configure(with item: UserDetailsItem)
+}
+
 protocol DetailsView: AnyObject {
     var presenter: DetailsPresenter? { get set }
-    var user: DetailsItem? { get set }
-    func reloadData()
+    func reloadData(sections: [UserDetailsSection])
 }
 
 final class DetailsViewController: UIViewController, DetailsView {
@@ -19,17 +32,9 @@ final class DetailsViewController: UIViewController, DetailsView {
     // MARK: - Private properties
 
     private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
-    //name, age, company, email, phone, address, about, balance, eyeColor,
-    //favoriteFruit, registered, latitud, longitude, tags, friends
-    // MARK: - DetailsView
-
-    var presenter: DetailsPresenter?
-    var user: DetailsItem?
+    private var sections: [UserDetailsSection] = []
     
     // MARK: - Lifecycle
-    
-    func reloadData() {
-    }
 
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,12 +47,30 @@ final class DetailsViewController: UIViewController, DetailsView {
         presenter?.didTriggerViewDidLoad()
     }
 
+    // MARK: - DetailsView
+
+    var presenter: DetailsPresenter?
+
+    func reloadData(sections: [UserDetailsSection]) {
+        self.sections = sections
+        tableView.reloadData()
+    }
+
     // MARK: - Private functions
     
     private func configureTableView() {
         view.addSubview(self.tableView)
+        
+        tableView.register(CellClass: TagsTableViewCell.self)
+        tableView.register(CellClass: MainTableViewCell.self)
         tableView.register(CellClass: DetailTableViewCell.self)
+
         tableView.dataSource = self
+        tableView.delegate = self
+
+        tableView.tableFooterView = UIView()
+        tableView.rowHeight = UITableView.automaticDimension
+
         tableView.snp.makeConstraints { maker in
             maker.edges.equalToSuperview()
         }
@@ -56,27 +79,39 @@ final class DetailsViewController: UIViewController, DetailsView {
 
 extension DetailsViewController: UITableViewDataSource {
     
-    // MARK: - Table view data source
-    
+    // MARK: - UITableViewDataSource
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section].title
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DetailsItem.detailsCount
+        return sections[section].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(DetailTableViewCell.self)
-        let index = indexPath.row
-        if let user = user {
-            switch index {
-            case 0...12:
-                if let (key, value ) = user.details[index].first {
-                    cell.configureCellBy(text: key, detailText: value)
-                } else { return cell }
-            case 13...14:
-                cell.configureCellBy(text: "", detailText: "")
-            default:
-                cell.configureCellBy(text: "", detailText: "")
-            }
+        let item = sections[indexPath.section].items[indexPath.row]
+        let cell = tableView.dequeue(item.CellType.self)
+        if let cell = cell as? UserDetailsCell {
+            cell.configure(with: item)
+        } else {
+            assertionFailure()
         }
         return cell
+    }
+}
+
+
+extension DetailsViewController: UITableViewDelegate {
+
+    // MARK: - UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = sections[indexPath.section].items[indexPath.row]
+        item.didSeletectItem?(item)
     }
 }

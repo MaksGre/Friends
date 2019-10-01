@@ -9,11 +9,11 @@
 import UIKit
 import SnapKit
 
-class DetailTableViewCell: UITableViewCell {
+class DetailTableViewCell: UITableViewCell, UserDetailsCell {
     
     // MARK: - Private properties
     
-    // MARK: - Override func
+    // MARK: - Init
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value2, reuseIdentifier: reuseIdentifier)
@@ -22,11 +22,16 @@ class DetailTableViewCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func configureCellBy(text: String, detailText: String) {
-        textLabel?.text = text
-        self.detailTextLabel?.text = detailText
+
+    // MARK: - UserDetailsCell
+
+    func configure(with item: UserDetailsItem) {
+        guard let item = item as? DetailsItem else {
+            assertionFailure()
+            return
+        }
+        textLabel?.text = item.title
+        detailTextLabel?.text = item.value
     }
-    
 }
 

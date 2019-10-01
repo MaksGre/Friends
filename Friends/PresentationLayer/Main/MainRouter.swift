@@ -21,8 +21,7 @@ final class MainRouterImpl: MainRouter {
     weak var viewController: UIViewController?
     
     func showUserDetails(_ user: RealmUser) {
-        let vc = DetailsAssembly.createModule()
-        vc.user = DetailsItem(user: user)
+        let vc = DetailsAssembly.createModule(user: user)
         viewController?.show(vc, sender: self)
     }
 }

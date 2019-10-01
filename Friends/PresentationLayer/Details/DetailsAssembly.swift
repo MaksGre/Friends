@@ -10,13 +10,11 @@ import UIKit
 
 final class DetailsAssembly {
 
-    static func createModule() -> DetailsViewController {
+    static func createModule(user: RealmUser) -> DetailsViewController {
         let view = DetailsViewController()
-        let interactor = DetailsInteractorImpl()
+        let interactor = DetailsInteractorImpl(storageService: StorageServiceImpl())
         let router = DetailsRouterImpl()
-        let presenter = DetailsPresenterImpl(view: view,
-                                             interactor: interactor,
-                                             router: router)
+        let presenter = DetailsPresenterImpl(view: view, interactor: interactor, router: router, user: user)
 
         view.presenter = presenter
         router.viewController = view

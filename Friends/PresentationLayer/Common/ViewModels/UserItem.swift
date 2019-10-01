@@ -6,18 +6,24 @@
 //  Copyright © 2019 Maksim Grebenozhko. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-struct UserItem {
+struct UserItem: UserDetailsItem {
     var id: Int
     var name: String
     var email: String
     var isActive: Bool
         
-    init(user: RealmUser) {
+    init(user: RealmUser, didSeletectItem: ((UserDetailsItem) -> Void)? = nil) {
         self.id = user.id
         self.name = user.name
         self.email = user.email
         self.isActive = user.isActive
+        self.didSeletectItem = didSeletectItem
     }
+
+    
+    var didSeletectItem: ((UserDetailsItem) -> Void)?
+
+    let CellType: (UITableViewCell & UserDetailsCell).Type = MainTableViewCell.self
 }
