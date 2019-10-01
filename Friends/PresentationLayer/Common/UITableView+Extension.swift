@@ -9,17 +9,11 @@
 import UIKit
 
 extension UITableView {
-    func registerWithNib<CellClass: UITableViewCell>(cellClass: CellClass.Type) {
-        let cellClassName = String(describing: CellClass.self)
-        let nib = UINib(nibName: cellClassName, bundle: nil)
-        register(nib, forCellReuseIdentifier: cellClassName)
-    }
-
     func register(CellClass: UITableViewCell.Type) {
         register(CellClass.self, forCellReuseIdentifier: String(describing: CellClass.self))
     }
     
-    func dequeue<CellClass: UITableViewCell>(_: CellClass.Type) -> CellClass {
+    func dequeue<CellClass: UITableViewCell>(_ CellClass: CellClass.Type) -> CellClass {
         let cellClassName = String(describing: CellClass.self)
         let cell = dequeueReusableCell(withIdentifier: cellClassName)
         guard let typedCell = cell as? CellClass else {
@@ -28,3 +22,4 @@ extension UITableView {
         return typedCell
     }
 }
+

@@ -13,6 +13,7 @@ import Foundation
 protocol  MainPresenter: AnyObject {
     func didTriggerViewReadyEvent()
     func didSelectUserById(id: Int)
+    func didTriggerRefreshData()
 }
 
 // MARK: - PresenterImpl
@@ -36,7 +37,7 @@ final class MainPresenterImpl: MainPresenter {
     func didTriggerViewReadyEvent() {
         interactor.loadAndCheckData()
         interactor.subscribeOnUsers { [weak self] users in
-            self?.view?.users =  users.map { UserItem(user: $0) }
+            self?.view?.set(users: users.map { UserItem(user: $0) })
             self?.view?.reloadData()
         }
     }
@@ -45,5 +46,12 @@ final class MainPresenterImpl: MainPresenter {
         guard let user = interactor.loadSelectedUserBy(id) else { return }
         router.showUserDetails(user)
     }
-    
+
+    func didTriggerRefreshData() {
+        interactor.refreshData {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) { [weak self] in 
+                self?.view?.hideLoadingIndicator()
+            }
+        }
+    }
 }

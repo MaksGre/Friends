@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class MainTableViewCell: UITableViewCell {
+class MainTableViewCell: UITableViewCell, UserDetailsCell {
 
     // MARK: - Private properties
 
@@ -44,6 +44,10 @@ class MainTableViewCell: UITableViewCell {
         configureLeftLabel(descriptionNameLabel, text: "Name:", rightNeighbor: valueNameLabel)
         configureLeftLabel(descriptionEmailLabel, text: "Email:", rightNeighbor: valueEmailLabel)
         configureLeftLabel(descriptionActiveLabel, text: "Active:", rightNeighbor: valueActiveLabel)
+
+        valueActiveLabel.snp.makeConstraints {
+            $0.bottom.equalToSuperview().offset(-8)
+        }
     }
     
     private func configureRightLabel(_ label: UILabel, text: String, topNeighbor: UILabel?) {
@@ -79,11 +83,19 @@ class MainTableViewCell: UITableViewCell {
             }
         }
     }
-    
-    func configureCellBy(_ user: UserItem) {
-        valueNameLabel.text = user.name
-        valueEmailLabel.text = user.email
-        valueActiveLabel.text = String(user.isActive)
-    }
 
+    // MARK: - UserDetailsCell
+
+    func configure(with item: UserDetailsItem) {
+        guard let item = item as? UserItem else {
+            assertionFailure()
+            return
+        }
+
+        valueNameLabel.text = item.name
+        valueEmailLabel.text = item.email
+        valueActiveLabel.text = String(item.isActive)
+
+        accessoryType = item.isActive ? .disclosureIndicator : .none
+    }
 }
