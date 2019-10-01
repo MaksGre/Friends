@@ -32,15 +32,9 @@ enum EyeColor: String, Decodable {
 }
 
 enum FavoriteFruit: String, Decodable {
-<<<<<<< HEAD
     case apple
     case banana
     case strawberry
-=======
-    case apple = "apple"
-    case banana = "banana"
-    case strawberry = "strawberry"
->>>>>>> 86f958b09d85462d106c30160cd07de26566f3b1
 }
 
 struct Friend: Decodable {
