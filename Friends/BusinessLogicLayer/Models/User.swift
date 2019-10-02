@@ -26,15 +26,19 @@ struct User: Decodable {
 }
 
 enum EyeColor: String, Decodable {
-    case blue
-    case brown
-    case green
+    case blue, brown, green
 }
 
 enum FavoriteFruit: String, Decodable {
-    case apple
-    case banana
-    case strawberry
+    case apple, banana, strawberry
+    
+    var emoji: String {
+        switch self {
+        case .apple: return "🍏"
+        case .banana: return "🍌"
+        case .strawberry: return "🍓"
+        }
+    }
 }
 
 struct Friend: Decodable {
@@ -42,6 +46,5 @@ struct Friend: Decodable {
 }
 
 enum Gender: String, Decodable {
-    case female
-    case male
+    case female, male
 }

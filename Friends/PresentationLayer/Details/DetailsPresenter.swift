@@ -34,7 +34,7 @@ final class DetailsPresenterImpl: DetailsPresenter {
     func didTriggerViewDidLoad() {
 
         let infoItems: [UserDetailsItem] = [
-            DetailsItem(title: "Balance:",        value: user.balance,           didSeletectItem: nil),
+            DetailsItem(title: "Balance:",        value: user.balance.discardUnwantedPart(),           didSeletectItem: nil),
             DetailsItem(title: "Age:",            value: String(user.age),       didSeletectItem: nil),
             DetailsItem(title: "Eye Color:",      value: user.eyeColor.rawValue, didSeletectItem: nil),
             DetailsItem(title: "Name:",           value: user.name,              didSeletectItem: nil),
@@ -47,11 +47,11 @@ final class DetailsPresenterImpl: DetailsPresenter {
             }),
             DetailsItem(title: "Address:",        value: user.address,           didSeletectItem: nil),
             DetailsItem(title: "About:",          value: user.about,             didSeletectItem: nil),
-            DetailsItem(title: "Registered:",     value: user.registered,        didSeletectItem: nil),
+            DetailsItem(title: "Registered:",     value: user.registered.dateInDesiredFormat(),        didSeletectItem: nil),
             DetailsItem(title: "Coordinates:",    value: getCoordinates(),       didSeletectItem: { [weak self] _ in
                 self?.showMap()
             }),
-            DetailsItem(title: "Favorite Fruit:", value: user.favoriteFruit.rawValue, didSeletectItem: nil),
+            DetailsItem(title: "Favorite Fruit:", value: user.favoriteFruit.emoji, didSeletectItem: nil),
             TagsItem(tags: user.tags.map { $0 }, didSeletectItem: nil)
         ]
 

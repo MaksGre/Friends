@@ -25,6 +25,7 @@
 		B530D8D92334BAC800A1AA4F /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8D82334BAC800A1AA4F /* MainAssembly.swift */; };
 		B530D8DB23354F1900A1AA4F /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8DA23354F1900A1AA4F /* MainInteractor.swift */; };
 		B530D8DD2335506200A1AA4F /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B530D8DC2335506200A1AA4F /* MainPresenter.swift */; };
+		B53BB32B2344784600E0D20E /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BB32A2344784600E0D20E /* String+Extension.swift */; };
 		B5A08B65233889C900832832 /* UserItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A08B64233889C900832832 /* UserItem.swift */; };
 		B5A08B672338C39F00832832 /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A08B662338C39F00832832 /* SnapKit.framework */; };
 		B5A08B8D233B889D00832832 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A08B8C233B889D00832832 /* StorageService.swift */; };
@@ -73,13 +74,13 @@
 		B530D8D82334BAC800A1AA4F /* MainAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		B530D8DA23354F1900A1AA4F /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
 		B530D8DC2335506200A1AA4F /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		B53BB32A2344784600E0D20E /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		B5A08B64233889C900832832 /* UserItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItem.swift; sourceTree = "<group>"; };
 		B5A08B662338C39F00832832 /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
 		B5A08B8C233B889D00832832 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		B5A08BAC233B8DEE00832832 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		B5A08BAD233B8DEE00832832 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		B5A08C01233CE78300832832 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		B5A08C03233DCC6400832832 /* Trash.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Trash.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B5B3C7752340BCAB00D7080F /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
 		B5B3C7762340BCAB00D7080F /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
 		B5B3C7772340BCAB00D7080F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
@@ -206,7 +207,6 @@
 				B5A08B632338871600832832 /* Models */,
 				B530D8AF23337BAE00A1AA4F /* NetworkService.swift */,
 				B5A08B8C233B889D00832832 /* StorageService.swift */,
-				B5A08C03233DCC6400832832 /* Trash.playground */,
 			);
 			path = BusinessLogicLayer;
 			sourceTree = "<group>";
@@ -251,6 +251,7 @@
 				A55E07FE23438E86006EC319 /* UICollectionView+Extension.swift */,
 				B5E77423233882E000CB7DA2 /* ViewModels */,
 				B5E774242338831200CB7DA2 /* Views */,
+				B53BB32A2344784600E0D20E /* String+Extension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -413,6 +414,7 @@
 				B530D8B423338D8400A1AA4F /* MainTableViewCell.swift in Sources */,
 				A57911F62341F785008D6DC4 /* UITableView+Extension.swift in Sources */,
 				B5A08B8D233B889D00832832 /* StorageService.swift in Sources */,
+				B53BB32B2344784600E0D20E /* String+Extension.swift in Sources */,
 				B530D8D92334BAC800A1AA4F /* MainAssembly.swift in Sources */,
 				B530D8B223337E6100A1AA4F /* RealmUser.swift in Sources */,
 				B5B3C7822340BCAB00D7080F /* DetailsInteractor.swift in Sources */,

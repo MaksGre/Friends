@@ -38,10 +38,8 @@ final class DetailsInteractorImpl: DetailsInteractor {
     }
     
     func callTo(subscriber: String) {
-        //guard let url = URL(string: "tel:\(subscriber)") else { return }
-        print(URL(string: "tel:+79277136445")!)
-        print(URL(string: "tel:+19694073505")!)
-        guard let url = URL(string: "tel:+19694073505") else { return }
+        let number = subscriber.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
+        guard let url = URL(string: "tel:\(number)") else { return }
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
