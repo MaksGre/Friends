@@ -35,7 +35,7 @@ enum EyeColor: String, Decodable {
         case .brown: color = .brown
         case .green: color = .green
         }
-        let font = UIFont.boldSystemFont(ofSize: 20)
+        let font = UIFont.boldSystemFont(ofSize: 17)
         let attributes: [NSAttributedString.Key: Any] = [
             .font: font,
             .foregroundColor: color

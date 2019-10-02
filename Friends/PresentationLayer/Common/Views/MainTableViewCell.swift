@@ -23,7 +23,7 @@ class MainTableViewCell: UITableViewCell, UserDetailsCell {
     // MARK: - Override func
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .value2, reuseIdentifier: reuseIdentifier)
         
         configureLabels()
     }
@@ -32,6 +32,8 @@ class MainTableViewCell: UITableViewCell, UserDetailsCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Private functions
+    
     private func configureLabels() {
         configureRightLabel(valueNameLabel, text: "name", topNeighbor: nil)
         configureRightLabel(valueEmailLabel, text: "email", topNeighbor: valueNameLabel)
@@ -49,7 +51,7 @@ class MainTableViewCell: UITableViewCell, UserDetailsCell {
         let fromLeft = 100
         let fromTop = 10
         let horizontalSpacing = 5
-        let fontSize: CGFloat = 15.0
+        let fontSize: CGFloat = 17.0
         
         contentView.addSubview(label)
         label.text = text
@@ -71,10 +73,11 @@ class MainTableViewCell: UITableViewCell, UserDetailsCell {
         contentView.addSubview(label)
         label.text = text
         label.font = .systemFont(ofSize: fontSize, weight: .regular)
+        label.textColor = .blue
         if let rightNeighbor = rightNeighbor {
             label.snp.makeConstraints {
                 $0.right.equalTo(rightNeighbor.snp.left).offset(-verticalSpacing)
-                $0.centerY.equalTo(rightNeighbor.snp.centerY).offset(0)
+                $0.centerY.equalTo(rightNeighbor.snp.centerY)
             }
         }
     }

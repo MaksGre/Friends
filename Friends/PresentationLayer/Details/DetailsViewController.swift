@@ -22,6 +22,10 @@ protocol UserDetailsCell {
     func configure(with item: UserDetailsItem)
 }
 
+protocol UserDetailsCellHeight {
+    func heightForRowAt(index: Int) -> CGFloat
+}
+
 protocol DetailsView: AnyObject {
     var presenter: DetailsPresenter? { get set }
     func reloadData(navigationItemTitle: String, sections: [UserDetailsSection])
@@ -71,6 +75,7 @@ final class DetailsViewController: UIViewController, DetailsView {
         tableView.delegate = self
 
         tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableView.automaticDimension
 
         tableView.snp.makeConstraints { maker in
@@ -104,6 +109,14 @@ extension DetailsViewController: UITableViewDataSource {
             assertionFailure()
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let item = sections[indexPath.section].items[indexPath.row]
+        let cell = tableView.dequeue(item.CellType.self)
+//        guard let cell = cell as? UserDetailsCellHeight else { return tableView.rowHeight }
+//        return cell.heightForRowAt(index: indexPath.row)
+        return tableView.rowHeight
     }
 }
 
