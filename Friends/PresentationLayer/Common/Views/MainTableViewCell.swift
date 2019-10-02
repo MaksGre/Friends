@@ -31,11 +31,6 @@ class MainTableViewCell: UITableViewCell, UserDetailsCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.accessoryType = .none
-    }
 
     private func configureLabels() {
         configureRightLabel(valueNameLabel, text: "name", topNeighbor: nil)
@@ -94,8 +89,7 @@ class MainTableViewCell: UITableViewCell, UserDetailsCell {
 
         valueNameLabel.text = item.name
         valueEmailLabel.text = item.email
-        valueActiveLabel.text = String(item.isActive)
-
-        accessoryType = item.isActive ? .disclosureIndicator : .none
+        valueActiveLabel.text = item.active
+        selectionStyle = item.isActive ? .default : .none
     }
 }

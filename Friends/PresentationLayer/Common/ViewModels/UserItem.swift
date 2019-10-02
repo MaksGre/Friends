@@ -13,6 +13,9 @@ struct UserItem: UserDetailsItem {
     var name: String
     var email: String
     var isActive: Bool
+    var active: String {
+        return isActive ? "✔︎" : "✘"
+    }
         
     init(user: RealmUser, didSeletectItem: ((UserDetailsItem) -> Void)? = nil) {
         self.id = user.id

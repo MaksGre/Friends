@@ -24,7 +24,7 @@ protocol UserDetailsCell {
 
 protocol DetailsView: AnyObject {
     var presenter: DetailsPresenter? { get set }
-    func reloadData(sections: [UserDetailsSection])
+    func reloadData(navigationItemTitle: String, sections: [UserDetailsSection])
 }
 
 final class DetailsViewController: UIViewController, DetailsView {
@@ -33,25 +33,27 @@ final class DetailsViewController: UIViewController, DetailsView {
 
     private let tableView = UITableView.init(frame: .zero, style: UITableView.Style.grouped)
     private var sections: [UserDetailsSection] = []
+    private var navigationItemTitle = ""
     
     // MARK: - Lifecycle
 
 	override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationItem.title = "Details"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
+            
         configureTableView()
         
         presenter?.didTriggerViewDidLoad()
+        
+        navigationItem.title = navigationItemTitle
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     // MARK: - DetailsView
 
     var presenter: DetailsPresenter?
 
-    func reloadData(sections: [UserDetailsSection]) {
+    func reloadData(navigationItemTitle: String, sections: [UserDetailsSection]) {
+        self.navigationItemTitle = navigationItemTitle
         self.sections = sections
         tableView.reloadData()
     }

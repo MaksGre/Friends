@@ -12,6 +12,7 @@ protocol DetailsInteractor: AnyObject {
     func loadUser(id: Int) -> RealmUser?
     func openEmailClient(recipient: String)
     func callTo(subscriber: String)
+    func openMap(coordinates: String)
 }
 
 final class DetailsInteractorImpl: DetailsInteractor {
@@ -43,5 +44,11 @@ final class DetailsInteractorImpl: DetailsInteractor {
         if UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
+    }
+    
+    func openMap(coordinates: String) {
+        let path = "http://maps.apple.com/?q=" + coordinates
+        guard let url = URL(string: path) else { return }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 }

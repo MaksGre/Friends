@@ -34,24 +34,20 @@ final class DetailsPresenterImpl: DetailsPresenter {
     func didTriggerViewDidLoad() {
 
         let infoItems: [UserDetailsItem] = [
-            DetailsItem(title: "Balance:",        value: user.balance.discardUnwantedPart(),           didSeletectItem: nil),
-            DetailsItem(title: "Age:",            value: String(user.age),       didSeletectItem: nil),
-            DetailsItem(title: "Eye Color:",      value: user.eyeColor.rawValue, didSeletectItem: nil),
-            DetailsItem(title: "Name:",           value: user.name,              didSeletectItem: nil),
-            DetailsItem(title: "Company:",        value: user.company,           didSeletectItem: nil),
-            DetailsItem(title: "Email:",          value: user.email,             didSeletectItem: { [weak self] _ in
-                self?.send(email: self?.user.email)
-            }),
-            DetailsItem(title: "Phone:",          value: user.phone,             didSeletectItem: { [weak self] _ in
-                self?.callPhone(number: self?.user.phone)
-            }),
-            DetailsItem(title: "Address:",        value: user.address,           didSeletectItem: nil),
-            DetailsItem(title: "About:",          value: user.about,             didSeletectItem: nil),
-            DetailsItem(title: "Registered:",     value: user.registered.dateInDesiredFormat(),        didSeletectItem: nil),
-            DetailsItem(title: "Coordinates:",    value: getCoordinates(),       didSeletectItem: { [weak self] _ in
-                self?.showMap()
-            }),
-            DetailsItem(title: "Favorite Fruit:", value: user.favoriteFruit.emoji, didSeletectItem: nil),
+            DetailsItem(title: "Balance:",        value: user.balance.discardUnwantedPart()),
+            DetailsItem(title: "Age:",            value: String(user.age)),
+            DetailsItem(title: "Eye Color:",      text: user.eyeColor.colorDot),
+            DetailsItem(title: "Company:",        value: user.company),
+            DetailsItem(title: "Email:",          value: user.email, didSeletectItem: { [weak self] _ in
+                self?.send(email: self?.user.email) }),
+            DetailsItem(title: "Phone:",          value: user.phone, didSeletectItem: { [weak self] _ in
+                self?.callPhone(number: self?.user.phone) }),
+            DetailsItem(title: "Address:",        value: user.address),
+            DetailsItem(title: "About:",          value: user.about),
+            DetailsItem(title: "Registered:",     value: user.registered.dateInDesiredFormat()),
+            DetailsItem(title: "Coordinates:",    value: user.coordinates, didSeletectItem: { [weak self] _ in
+                self?.showMap(coordinates: self?.user.coordinates) }),
+            DetailsItem(title: "Favorite Fruit:", value: user.favoriteFruit.emoji),
             TagsItem(tags: user.tags.map { $0 }, didSeletectItem: nil)
         ]
 
@@ -70,14 +66,10 @@ final class DetailsPresenterImpl: DetailsPresenter {
         let friendsSection = UserDetailsSection(title: "Friends", items: friendItems)
 
         sections = [infoSection, friendsSection]
-        view?.reloadData(sections: sections)
+        view?.reloadData(navigationItemTitle: user.name, sections: sections)
     }
 
     // MARK: - Private functions
-
-    private func getCoordinates() -> String {
-        return ""
-    }
 
     private func callPhone(number: String?) {
         guard let number = number else { return }
@@ -89,8 +81,9 @@ final class DetailsPresenterImpl: DetailsPresenter {
         interactor.openEmailClient(recipient: email)
     }
 
-    private func showMap() {
-
+    private func showMap(coordinates: String?) {
+        guard let coordinates = coordinates else { return }
+        interactor.openMap(coordinates: coordinates)
     }
 
     private func showUserDetailsInfo(_ item: UserDetailsItem) {

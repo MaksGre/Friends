@@ -10,12 +10,26 @@ import UIKit
 
 struct DetailsItem: UserDetailsItem {
 
-    let title: String
-    let value: String
-
+    var title: String
+    var value: String
+    var text: NSAttributedString
+    
     // MARK: - UserDetailsItem
 
     var didSeletectItem: ((UserDetailsItem) -> Void)?
 
     let CellType: (UITableViewCell & UserDetailsCell).Type = DetailTableViewCell.self
+    
+    init(title: String, value: String, didSeletectItem: ((UserDetailsItem) -> Void)? = nil) {
+        self.title = title
+        self.value = value
+        self.didSeletectItem = didSeletectItem
+        self.text = NSAttributedString(string: value)
+    }
+    init(title: String, text: NSAttributedString, didSeletectItem: ((UserDetailsItem) -> Void)? = nil) {
+        self.title = title
+        self.value = ""
+        self.didSeletectItem = nil
+        self.text = text
+    }
 }

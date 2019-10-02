@@ -29,6 +29,9 @@ class RealmUser: Object {
     @objc dynamic var registered = String()
     @objc dynamic var latitude = Double()
     @objc dynamic var longitude = Double()
+    var coordinates: String {
+        return "\(latitude),\(longitude)"
+    }
     let tags = List<String>()
     let friends = List<Int>()
     @objc dynamic private var favoriteFruitString = String()

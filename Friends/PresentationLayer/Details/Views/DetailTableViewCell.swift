@@ -31,7 +31,8 @@ class DetailTableViewCell: UITableViewCell, UserDetailsCell {
             return
         }
         textLabel?.text = item.title
-        detailTextLabel?.text = item.value
+        detailTextLabel?.attributedText = item.text
+        selectionStyle = item.didSeletectItem == nil ? .none : .default
     }
 }
 

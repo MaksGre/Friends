@@ -6,7 +6,7 @@
 //  Copyright © 2019 Maksim Grebenozhko. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct User: Decodable {
     let id: Int
@@ -27,6 +27,21 @@ struct User: Decodable {
 
 enum EyeColor: String, Decodable {
     case blue, brown, green
+    
+    var colorDot: NSAttributedString {
+        var color = UIColor()
+        switch self {
+        case .blue: color = .blue
+        case .brown: color = .brown
+        case .green: color = .green
+        }
+        let font = UIFont.boldSystemFont(ofSize: 20)
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: font,
+            .foregroundColor: color
+        ]
+        return NSAttributedString(string: ".", attributes: attributes)
+    }
 }
 
 enum FavoriteFruit: String, Decodable {

@@ -28,7 +28,7 @@ class TagCollectionViewCell: UICollectionViewCell {
     // MARK: - Public functions
 
     func configure(tag: String) {
-        label.text = tag
+        label.text = "#" + tag
     }
 
     // MARK: - Private function
@@ -38,8 +38,8 @@ class TagCollectionViewCell: UICollectionViewCell {
         label.clipsToBounds = true
         label.layer.cornerRadius = 10
         label.insets = UIEdgeInsets(top: 6, left: 10, bottom: 6, right: 10)
-        label.backgroundColor = .gray
-        label.textColor = .white
+        label.backgroundColor = .white
+        label.textColor = .black
         label.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
