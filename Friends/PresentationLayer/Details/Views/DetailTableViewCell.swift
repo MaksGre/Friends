@@ -13,8 +13,8 @@ class DetailTableViewCell: UITableViewCell, UserDetailsCell, UserDetailsCellHeig
     
     // MARK: - Private properties
     
-    private var descriptionLabel = UILabel()
-    private var valueLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let valueLabel = UILabel()
 
     // MARK: - Init
 
@@ -32,33 +32,34 @@ class DetailTableViewCell: UITableViewCell, UserDetailsCell, UserDetailsCellHeig
     
     private func configureElements() {
         let fromLeftRight = 20
-        let fromTop = 10
+        let fromTop = 5
         let fromLeftForField = 120
-            
+
+        contentView.addSubview(titleLabel)
         contentView.addSubview(valueLabel)
+
+        titleLabel.text = "description"
+        titleLabel.font = .systemFont(ofSize: 15.0, weight: .regular)
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.textColor = .blue
+        titleLabel.textAlignment = .right
+        titleLabel.snp.makeConstraints {
+            $0.left.equalToSuperview().offset(fromLeftRight)
+            $0.right.equalTo(valueLabel.snp.left).offset(-fromLeftRight)
+            $0.centerY.equalToSuperview()
+        }
+
         valueLabel.text = "description"
         valueLabel.font = .systemFont(ofSize: 17.0, weight: .regular)
         valueLabel.textAlignment = .left
         valueLabel.numberOfLines = 0
         valueLabel.lineBreakMode = .byWordWrapping
         valueLabel.snp.makeConstraints {
-            $0.left.equalTo(fromLeftForField)
-            $0.right.equalTo(fromLeftRight)
-            $0.top.equalTo(fromTop)
+            $0.left.equalToSuperview().offset(fromLeftForField)
+            $0.right.equalToSuperview().offset(-fromLeftRight)
+            $0.top.equalToSuperview().offset(fromTop)
+            $0.bottom.equalToSuperview().offset(-fromTop)
         }
-
-        contentView.addSubview(descriptionLabel)
-        descriptionLabel.text = "description"
-        descriptionLabel.font = .systemFont(ofSize: 15.0, weight: .regular)
-        descriptionLabel.adjustsFontSizeToFitWidth = true
-        descriptionLabel.textColor = .blue
-        descriptionLabel.textAlignment = .right
-        descriptionLabel.snp.makeConstraints {
-            $0.left.equalTo(fromLeftRight)
-            $0.right.equalTo(valueLabel.snp.left).offset(-fromLeftRight)
-            $0.centerY.equalTo(valueLabel.snp.centerY)
-        }
-        
     }
 
     // MARK: - UserDetailsCell
@@ -68,15 +69,22 @@ class DetailTableViewCell: UITableViewCell, UserDetailsCell, UserDetailsCellHeig
             assertionFailure()
             return
         }
-        descriptionLabel.text = item.title
-        valueLabel.attributedText = item.text
+        titleLabel.text = item.title
+        switch item.textType {
+        case .plain(let text):
+            valueLabel.attributedText = nil
+            valueLabel.text = text
+        case .attributed(let attributedText):
+            valueLabel.text = nil
+            valueLabel.attributedText = attributedText
+        }
         selectionStyle = item.didSeletectItem == nil ? .none : .default
     }
     
     // MARK: - UserDetailsCellHeight
     
     func heightForRowAt(index: Int) -> CGFloat {
-        return descriptionLabel.bounds.height + 20
+        return titleLabel.bounds.height + 20
     }
 }
 

@@ -102,5 +102,6 @@ extension MainViewController: UITableViewDataSource, UITableViewDelegate {
         if user.isActive {
             presenter?.didSelectUserById(id: user.id)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

@@ -8,28 +8,26 @@
 
 import UIKit
 
+
 struct DetailsItem: UserDetailsItem {
 
+    enum TextType {
+        case plain(String)
+        case attributed(NSAttributedString)
+    }
+    
     var title: String
-    var value: String
-    var text: NSAttributedString
+    var textType: TextType
     
     // MARK: - UserDetailsItem
 
-    var didSeletectItem: ((UserDetailsItem) -> Void)?
+    var didSeletectItem: ((UserDetailsItem) -> Void)? = nil
 
     let CellType: (UITableViewCell & UserDetailsCell).Type = DetailTableViewCell.self
     
-    init(title: String, value: String, didSeletectItem: ((UserDetailsItem) -> Void)? = nil) {
+    init(title: String, textType: TextType, didSeletectItem: ((UserDetailsItem) -> Void)? = nil) {
         self.title = title
-        self.value = value
+        self.textType = textType
         self.didSeletectItem = didSeletectItem
-        self.text = NSAttributedString(string: value)
-    }
-    init(title: String, text: NSAttributedString, didSeletectItem: ((UserDetailsItem) -> Void)? = nil) {
-        self.title = title
-        self.value = ""
-        self.didSeletectItem = nil
-        self.text = text
     }
 }

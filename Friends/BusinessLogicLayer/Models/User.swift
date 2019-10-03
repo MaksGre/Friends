@@ -40,7 +40,7 @@ enum EyeColor: String, Decodable {
             .font: font,
             .foregroundColor: color
         ]
-        return NSAttributedString(string: ".", attributes: attributes)
+        return NSAttributedString(string: "•", attributes: attributes)
     }
 }
 

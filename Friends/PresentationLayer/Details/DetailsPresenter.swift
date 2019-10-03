@@ -34,20 +34,20 @@ final class DetailsPresenterImpl: DetailsPresenter {
     func didTriggerViewDidLoad() {
 
         let infoItems: [UserDetailsItem] = [
-            DetailsItem(title: "Balance:",        value: user.balance.discardUnwantedPart()),
-            DetailsItem(title: "Age:",            value: String(user.age)),
-            DetailsItem(title: "Eye Color:",      text: user.eyeColor.colorDot),
-            DetailsItem(title: "Company:",        value: user.company),
-            DetailsItem(title: "Email:",          value: user.email, didSeletectItem: { [weak self] _ in
+            DetailsItem(title: "Balance:",        textType: .plain(user.balance.discardUnwantedPart())),
+            DetailsItem(title: "Age:",            textType: .plain(String(user.age))),
+            DetailsItem(title: "Eye Color:",      textType: .attributed(user.eyeColor.colorDot)),
+            DetailsItem(title: "Company:",        textType: .plain(user.company)),
+            DetailsItem(title: "Email:",          textType: .plain(user.email), didSeletectItem: { [weak self] _ in
                 self?.send(email: self?.user.email) }),
-            DetailsItem(title: "Phone:",          value: user.phone, didSeletectItem: { [weak self] _ in
+            DetailsItem(title: "Phone:",          textType: .plain(user.phone), didSeletectItem: { [weak self] _ in
                 self?.callPhone(number: self?.user.phone) }),
-            DetailsItem(title: "Address:",        value: user.address),
-            DetailsItem(title: "About:",          value: user.about),
-            DetailsItem(title: "Registered:",     value: user.registered.dateInDesiredFormat()),
-            DetailsItem(title: "Coordinates:",    value: user.coordinates, didSeletectItem: { [weak self] _ in
+            DetailsItem(title: "Address:",        textType: .plain(user.address)),
+            DetailsItem(title: "About:",          textType: .plain(user.about)),
+            DetailsItem(title: "Registered:",     textType: .plain(user.registered.dateInDesiredFormat())),
+            DetailsItem(title: "Coordinates:",    textType: .plain(user.coordinates), didSeletectItem: { [weak self] _ in
                 self?.showMap(coordinates: self?.user.coordinates) }),
-            DetailsItem(title: "Favorite Fruit:", value: user.favoriteFruit.emoji),
+            DetailsItem(title: "Favorite Fruit:", textType: .plain(user.favoriteFruit.emoji)),
             TagsItem(tags: user.tags.map { $0 }, didSeletectItem: nil)
         ]
 
