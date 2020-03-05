@@ -111,7 +111,6 @@ extension DetailsViewController: UITableViewDataSource {
     }
 }
 
-
 extension DetailsViewController: UITableViewDelegate {
 
     // MARK: - UITableViewDelegate

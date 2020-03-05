@@ -12,7 +12,6 @@ protocol MainView: AnyObject {
     var presenter: MainPresenter? { get set }
     func reloadData()
     func set(users: [UserItem])
-
     func hideLoadingIndicator()
 }
 

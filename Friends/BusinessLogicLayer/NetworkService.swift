@@ -39,11 +39,9 @@ final class NetworkServiceImpl: NetworkService {
                         }
                     }
                 } catch {
-                    print(error)
                     completion(.failure(error))
                 }
             case .failure(let error):
-                print(error)
                 completion(.failure(error))
             }
         }

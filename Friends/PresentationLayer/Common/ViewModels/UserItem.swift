@@ -25,7 +25,6 @@ struct UserItem: UserDetailsItem {
         self.didSeletectItem = didSeletectItem
     }
 
-    
     var didSeletectItem: ((UserDetailsItem) -> Void)?
 
     let CellType: (UITableViewCell & UserDetailsCell).Type = MainTableViewCell.self
