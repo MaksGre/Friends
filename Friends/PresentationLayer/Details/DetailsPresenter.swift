@@ -48,7 +48,7 @@ final class DetailsPresenterImpl: DetailsPresenter {
             DetailsItem(title: "Coordinates:",    textType: .plain(user.coordinates), didSeletectItem: { [weak self] _ in
                 self?.showMap(coordinates: self?.user.coordinates) }),
             DetailsItem(title: "Favorite Fruit:", textType: .plain(user.favoriteFruit.emoji)),
-            TagsItem(tags: user.tags.map { $0 }, didSeletectItem: nil)
+            TagsItem(tags: user.tags.map { $0 })
         ]
 
         let infoSection = UserDetailsSection(title: nil, items: infoItems)

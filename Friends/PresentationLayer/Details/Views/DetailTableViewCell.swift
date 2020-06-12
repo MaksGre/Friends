@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class DetailTableViewCell: UITableViewCell, UserDetailsCell, UserDetailsCellHeight {
+class DetailTableViewCell: UITableViewCell, UserDetailsCell {
     
     // MARK: - Private properties
     
@@ -81,10 +81,5 @@ class DetailTableViewCell: UITableViewCell, UserDetailsCell, UserDetailsCellHeig
         selectionStyle = item.didSeletectItem == nil ? .none : .default
     }
     
-    // MARK: - UserDetailsCellHeight
-    
-    func heightForRowAt(index: Int) -> CGFloat {
-        return titleLabel.bounds.height + 20
-    }
 }
 

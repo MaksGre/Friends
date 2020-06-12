@@ -22,10 +22,6 @@ protocol UserDetailsCell {
     func configure(with item: UserDetailsItem)
 }
 
-protocol UserDetailsCellHeight {
-    func heightForRowAt(index: Int) -> CGFloat
-}
-
 protocol DetailsView: AnyObject {
     var presenter: DetailsPresenter? { get set }
     func reloadData(navigationItemTitle: String, sections: [UserDetailsSection])
